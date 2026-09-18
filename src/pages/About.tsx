@@ -163,7 +163,7 @@ export function About() {
                 </div>
 
                 <div className="philosophy-card-foot">
-                  <Link to="/services" className="button light full">
+                  <Link to="/services" className="button white full">
                     <span>Explore Service Cycle</span>
                     <ArrowRight size={15} />
                   </Link>

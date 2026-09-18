@@ -384,6 +384,32 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
   transform: translateX(3px);
 }
 
+/* =========================================================
+   PRECISION BUTTON HIERARCHY & ARCHITECTURAL BUTTON SYSTEM
+   ========================================================= */
+
+/* Sizing Scale */
+.button.lg {
+  min-height: 52px;
+  padding: 15px 32px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.button.md {
+  min-height: 44px;
+  padding: 12px 24px;
+  font-size: 10px;
+}
+
+.button.sm,
+.button.compact {
+  min-height: 36px;
+  padding: 8px 16px;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
 /* 1. Dark Engineering Obsidian Button */
 .button.dark {
   background: linear-gradient(180deg, #181b15 0%, #0d0f0c 100%);
@@ -399,16 +425,37 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), 0 0 18px rgba(255, 189, 53, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
-/* 2. Refined Metallic Engineering Gold Buttons (No aggressive neon yellow) */
-.button.light,
+/* 2. Porcelain-Frost Architectural White / Light Button */
+.button.white,
+.button.light {
+  background: linear-gradient(180deg, #ffffff 0%, #f4f5ee 100%);
+  color: #11120f !important;
+  border: 1px solid rgba(17, 18, 15, 0.16);
+  box-shadow: 0 3px 12px rgba(17, 18, 15, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  font-weight: 700;
+}
+
+.button.white:hover,
+.button.light:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #fffdf4 100%);
+  border-color: rgba(255, 189, 53, 0.75);
+  color: #000000 !important;
+  box-shadow: 0 8px 24px rgba(17, 18, 15, 0.12), 0 0 16px rgba(255, 189, 53, 0.22), inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* 3. Refined Metallic Engineering Gold Buttons */
+.button.primary,
+.button.gold,
 .btn-catalog {
   background: linear-gradient(180deg, #f5bc38 0%, #cf8b0e 100%);
   color: #0c0d0a !important;
   border: 1px solid #dfa21e;
   box-shadow: 0 4px 18px rgba(207, 139, 14, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  font-weight: 800;
 }
 
-.button.light:hover,
+.button.primary:hover,
+.button.gold:hover,
 .btn-catalog:hover {
   background: linear-gradient(180deg, #ffd05b 0%, #db9715 100%);
   border-color: #ffe699;
@@ -416,7 +463,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
   box-shadow: 0 10px 30px rgba(207, 139, 14, 0.45), 0 0 20px rgba(255, 189, 53, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.65);
 }
 
-/* 3. Glassmorphic Translucent Engineering Buttons */
+/* 4. Glassmorphic Translucent Engineering Buttons */
 .button.glass {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
@@ -465,7 +512,7 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
   box-shadow: 0 8px 26px rgba(255, 189, 53, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
-/* 4. PDF Download Action Button */
+/* 5. PDF Download Action Button */
 .btn-download-pdf {
   background: linear-gradient(180deg, #ecb030 0%, #c48208 100%);
   color: #0c0d0a !important;
@@ -2139,20 +2186,282 @@ body.preloader-complete:not(.preloader-exiting) .progress{
 }
 @media(prefers-reduced-motion:reduce){.language-control{transition:none!important}}
 
-/* V19 — machinery catalogue: visual first, specifications only where they inform a decision. */
-.products-intro{display:grid;grid-template-columns:minmax(190px,.7fr) minmax(0,1.3fr);gap:36px;align-items:start;padding-top:44px;padding-bottom:44px}.products-intro p{max-width:600px;margin:0;color:#5d605a;font-size:15px;line-height:1.65}
-.products-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;padding-top:0}.product-card{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(240px,.92fr);min-height:330px;background:#f9f8f3;overflow:hidden;transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s}.product-card:hover{transform:translateY(-4px);box-shadow:0 22px 45px rgba(17,18,15,.12)}.product-image{position:relative;overflow:hidden;background:#20221f;min-height:100%}.product-image::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.58));pointer-events:none}.product-image img{width:100%;height:100%;min-height:330px;object-fit:cover;display:block;filter:saturate(.82) contrast(1.04);transition:transform .65s cubic-bezier(.22,1,.36,1),filter .4s}.product-card:hover .product-image img{transform:scale(1.045);filter:saturate(1) contrast(1.06)}.product-image span{position:absolute;z-index:1;left:17px;bottom:15px;color:#f7f8f2;font:700 8px 'DM Sans',sans-serif;letter-spacing:.14em;text-transform:uppercase}.product-details{padding:28px 24px 24px;display:flex;flex-direction:column;align-items:flex-start}.product-details h2{margin:9px 0 0;font:500 clamp(25px,2.3vw,35px)/.96 'Space Grotesk',sans-serif;letter-spacing:-.055em}.product-details ul{display:grid;gap:8px;list-style:none;padding:21px 0;margin:0;margin-top:auto;width:100%;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.product-details li{position:relative;padding-left:12px;color:#676963;font-size:10px;line-height:1.35}.product-details li::before{content:'';position:absolute;left:0;top:.48em;width:4px;height:4px;border-radius:50%;background:var(--accent);box-shadow:0 0 7px rgba(255,189,53,.42)}.product-details .text-dark{margin-top:20px}.product-enquiry{display:flex;align-items:flex-end;justify-content:space-between;gap:35px;padding:68px max(5vw,20px);background:#0a0b0a;color:#f4f4ef}.product-enquiry h2{margin:11px 0 0;font:500 clamp(38px,5vw,72px)/.88 'Space Grotesk',sans-serif;letter-spacing:-.065em}.product-enquiry h2 em{font-style:normal;color:#b8c7bc}.product-enquiry .button{flex:none}
-@media(max-width:1180px){.product-card{grid-template-columns:1fr}.product-image,.product-image img{min-height:250px}.product-details{min-height:245px}.product-details ul{margin-top:22px}}
-@media(max-width:760px){.products-intro{grid-template-columns:1fr;gap:16px;padding-top:30px;padding-bottom:30px}.products-intro p{font-size:13px}.products-grid{grid-template-columns:1fr;gap:14px}.product-card{grid-template-columns:1fr;min-height:0}.product-image,.product-image img{min-height:245px}.product-details{min-height:0;padding:23px 19px 21px}.product-details h2{font-size:31px}.product-details ul{margin-top:22px;padding:17px 0}.product-enquiry{align-items:flex-start;flex-direction:column;padding:50px 20px;gap:28px}.product-enquiry h2{font-size:44px}}
-@media(prefers-reduced-motion:reduce){.product-card,.product-image img{transition:none!important}.product-card:hover{transform:none}}
+/* =========================================================
+   MACHINERY CATALOGUE & PRODUCT CARDS ARCHITECTURE
+   ========================================================= */
+.products-intro {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.7fr) minmax(0, 1.3fr);
+  gap: 36px;
+  align-items: start;
+  padding-top: 44px;
+  padding-bottom: 44px;
+}
+.products-intro p {
+  max-width: 600px;
+  margin: 0;
+  color: #5d605a;
+  font-size: 15px;
+  line-height: 1.65;
+}
 
-/* V20 — catalogue precision and language access. */
-.products-grid>div:nth-child(3n+2) .product-card{background:#f1f1eb}.products-grid>div:nth-child(3n) .product-card{background:#f6f5f0}.product-card{position:relative;border-color:rgba(17,18,15,.13)}.product-card::before{content:'';position:absolute;z-index:3;left:0;right:100%;top:0;height:2px;background:linear-gradient(90deg,var(--accent),#8bc59e);transition:right .55s cubic-bezier(.22,1,.36,1)}.product-card:hover::before{right:0}.product-image::before{content:'';position:absolute;z-index:2;top:14px;right:14px;width:24px;height:24px;border-top:1px solid rgba(255,255,255,.7);border-right:1px solid rgba(255,255,255,.7);opacity:.75}.product-details{position:relative}.product-details::after{content:'';position:absolute;right:18px;bottom:18px;width:20px;height:20px;border-right:1px solid rgba(17,18,15,.12);border-bottom:1px solid rgba(17,18,15,.12)}.product-details h2{max-width:280px}.product-details ul{position:relative}.product-details ul::before{content:'KEY SPECIFICATIONS';position:absolute;top:-8px;left:0;transform:translateY(-100%);font:700 7px 'DM Sans',sans-serif;color:#9a9c96;letter-spacing:.13em}.product-details li{transition:color .25s,transform .25s}.product-card:hover .product-details li{color:#30332e;transform:translateX(2px)}html[lang="pt"] .product-details ul::before{content:'ESPECIFICAÇÕES-CHAVE'}html[lang="fr"] .product-details ul::before{content:'SPÉCIFICATIONS CLÉS'}
-@media(max-width:1100px){
-  .nav{gap:8px}
-  .nav .logo{flex:0 0 auto!important;min-width:max-content!important;margin-right:0}
-  .nav-language-control{margin-left:0;flex-shrink:0;min-width:0;height:38px;padding:0 8px}
-  .products-grid>div:nth-child(3n+2) .product-card,.products-grid>div:nth-child(3n) .product-card{background:#f9f8f3}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  padding-top: 0;
+}
+
+.product-card {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.95fr) minmax(270px, 1.05fr);
+  min-height: 360px;
+  background: #f9f8f3;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(17, 18, 15, 0.12);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px rgba(17, 18, 15, 0.12);
+}
+
+.product-card::before {
+  content: '';
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 100%;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), #8bc59e);
+  transition: right 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.product-card:hover::before {
+  right: 0;
+}
+
+.product-image {
+  position: relative;
+  overflow: hidden;
+  background: #20221f;
+  min-height: 100%;
+}
+
+.product-image::before {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: 14px;
+  right: 14px;
+  width: 24px;
+  height: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.7);
+  border-right: 1px solid rgba(255, 255, 255, 0.7);
+  opacity: 0.75;
+}
+
+.product-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, 0.58));
+  pointer-events: none;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.82) contrast(1.04);
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s;
+}
+
+.product-card:hover .product-image img {
+  transform: scale(1.045);
+  filter: saturate(1) contrast(1.06);
+}
+
+.product-image span {
+  position: absolute;
+  z-index: 1;
+  left: 17px;
+  bottom: 15px;
+  color: #f7f8f2;
+  font: 700 8.5px 'DM Sans', sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.product-details {
+  padding: 28px 26px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  background: inherit;
+}
+
+.product-head-group {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.product-details h2 {
+  margin: 8px 0 0;
+  font: 600 clamp(22px, 1.8vw, 30px)/1.15 'Space Grotesk', sans-serif;
+  letter-spacing: -0.045em;
+  color: #11120f;
+  word-break: break-word;
+}
+
+.product-specs-wrap {
+  margin-top: auto;
+  padding: 14px 0 16px;
+  width: 100%;
+  border-top: 1px solid rgba(17, 18, 15, 0.1);
+  border-bottom: 1px solid rgba(17, 18, 15, 0.1);
+}
+
+.product-spec-kicker {
+  font: 700 7.5px 'Space Grotesk', monospace;
+  color: #8b8e86;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.product-details ul {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.product-details li {
+  position: relative;
+  padding-left: 14px;
+  color: #555852;
+  font-size: 11px;
+  line-height: 1.45;
+  transition: color 0.25s, transform 0.25s;
+}
+
+.product-details li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.48em;
+  width: 4.5px;
+  height: 4.5px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 7px rgba(255, 189, 53, 0.42);
+}
+
+.product-card:hover .product-details li {
+  color: #20221e;
+  transform: translateX(2px);
+}
+
+.product-card-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 18px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.product-enquiry {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 35px;
+  padding: 68px max(5vw, 20px);
+  background: #0a0b0a;
+  color: #f4f4ef;
+}
+
+.product-enquiry h2 {
+  margin: 11px 0 0;
+  font: 500 clamp(38px, 5vw, 72px)/0.88 'Space Grotesk', sans-serif;
+  letter-spacing: -0.065em;
+}
+
+.product-enquiry h2 em {
+  font-style: normal;
+  color: #b8c7bc;
+}
+
+.product-enquiry .button {
+  flex: none;
+}
+
+@media(max-width: 1180px) {
+  .product-card {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .product-image,
+  .product-image img {
+    min-height: 260px;
+  }
+  .product-details {
+    padding: 24px 22px 22px;
+  }
+}
+
+@media(max-width: 760px) {
+  .products-intro {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  .products-intro p {
+    font-size: 13px;
+  }
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .product-image,
+  .product-image img {
+    min-height: 240px;
+  }
+  .product-details {
+    padding: 22px 18px 20px;
+  }
+  .product-details h2 {
+    font-size: 26px;
+  }
+  .product-enquiry {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 50px 20px;
+    gap: 28px;
+  }
+  .product-enquiry h2 {
+    font-size: 44px;
+  }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  .product-card,
+  .product-image img {
+    transition: none !important;
+  }
+  .product-card:hover {
+    transform: none;
+  }
 }
 @media(max-width:520px){
   .nav{
@@ -2265,16 +2574,15 @@ body.preloader-complete:not(.preloader-exiting) .progress{
 .language-control-mobile{min-width:74px;height:34px;padding:0 8px}
 .nav-language-control{min-width:88px}
 
-.button.light,.nav-quote,.round{color:#10120f!important;text-shadow:none;font-weight:800;box-shadow:inset 0 0 0 1px rgba(17,18,15,.08),0 8px 20px rgba(0,0,0,.14)}
-.button.light{border-color:rgba(17,18,15,.16);background:linear-gradient(135deg,#fff 0%,#f1f2eb 100%)}
-.button.light:hover,.nav-quote:hover,.round:hover{color:#10120f!important;background:linear-gradient(135deg,#ffdf7b 0%,var(--accent) 100%)}
-.button.light svg,.nav-quote svg,.round svg{color:currentColor;stroke-width:2.4}
+.nav-quote,.round{color:#10120f!important;text-shadow:none;font-weight:800;box-shadow:inset 0 0 0 1px rgba(17,18,15,.08),0 8px 20px rgba(0,0,0,.14)}
+.nav-quote:hover,.round:hover{color:#10120f!important;background:linear-gradient(135deg,#ffdf7b 0%,var(--accent) 100%)}
+.nav-quote svg,.round svg{color:currentColor;stroke-width:2.4}
 @media(max-width:430px){
   .nav-language-control{min-width:62px;padding:0 6px;gap:4px}
   .nav-language-control .language-value{font-size:7.5px;padding:2px 3px}
   .language-control-mobile{min-width:68px}
 }
-@media(prefers-reduced-motion:reduce){.language-control,.button.light,.nav-quote,.round{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.language-control,.nav-quote,.round{transition:none!important}}
 
 /* =========================================================
    MOBILE NAV OVERFLOW & BRAND VISIBILITY SYSTEM

@@ -46,21 +46,26 @@ export function Products() {
                 </span>
               </div>
               <div className="product-details">
-                <div>
+                <div className="product-head-group">
                   <div className="eyebrow">GIT / EQUIPMENT</div>
                   <h2>{product.name}</h2>
                 </div>
-                <ul>
-                  {product.specs.map((spec) => (
-                    <li key={spec}>{spec}</li>
-                  ))}
-                </ul>
-                <div style={{ display: 'flex', gap: '14px', alignItems: 'center', marginTop: 'auto', paddingTop: '16px' }}>
-                  <Link to="/contact" className="text-dark">
-                    Request configuration <ArrowUpRight size={15} />
+                <div className="product-specs-wrap">
+                  <div className="product-spec-kicker">KEY SPECIFICATIONS</div>
+                  <ul>
+                    {product.specs.map((spec) => (
+                      <li key={spec}>{spec}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="product-card-actions">
+                  <Link to="/contact" className="button sm white">
+                    <span>Request configuration</span>
+                    <ArrowUpRight size={14} />
                   </Link>
-                  <Link to="/catalog" className="text-dark" style={{ color: 'var(--accent)' }}>
-                    Specs <FileText size={13} />
+                  <Link to="/catalog" className="button sm glass-gold">
+                    <FileText size={13} />
+                    <span>Specs</span>
                   </Link>
                 </div>
               </div>

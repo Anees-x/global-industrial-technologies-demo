@@ -19,6 +19,11 @@ export function TranslationBridge() {
 
     try {
       const dictionary = translations[language] || {};
+      const lowerDict: Record<string, string> = {};
+      Object.keys(dictionary).forEach((k) => {
+        lowerDict[k.toLowerCase().trim()] = dictionary[k];
+      });
+
       const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
         acceptNode(node: Node) {
           if (!node.parentElement) return NodeFilter.FILTER_REJECT;
@@ -31,6 +36,76 @@ export function TranslationBridge() {
           return NodeFilter.FILTER_ACCEPT;
         }
       });
+
+      const resolveTranslation = (raw: string): string | undefined => {
+        const trimmed = raw.trim();
+        if (!trimmed) return undefined;
+
+        // 1. Direct dictionary match
+        if (dictionary[trimmed]) return dictionary[trimmed];
+
+        // 2. Normalized spaces match
+        const normalized = trimmed.replace(/\s+/g, ' ');
+        if (dictionary[normalized]) return dictionary[normalized];
+
+        // 3. Punctuation / Quote wrapper resolution (e.g. “WE DO NOT BELIEVE IN or ISOLATED MACHINES.”)
+        const quoteMatch = trimmed.match(/^([“"‘'«(—•\s]*)(.*?)([”"’'»):.,—•\s]*)$/);
+        if (quoteMatch && quoteMatch[2] && (quoteMatch[1] || quoteMatch[3])) {
+          const prefix = quoteMatch[1];
+          const core = quoteMatch[2].trim();
+          const suffix = quoteMatch[3];
+          if (dictionary[core]) {
+            return `${prefix}${dictionary[core]}${suffix}`;
+          }
+          if (lowerDict[core.toLowerCase()]) {
+            return `${prefix}${lowerDict[core.toLowerCase()]}${suffix}`;
+          }
+        }
+
+        // 4. Case-insensitive lookup
+        const lower = trimmed.toLowerCase();
+        if (lowerDict[lower]) return lowerDict[lower];
+
+        // 5. Uppercase transform fallback
+        if (
+          trimmed === trimmed.toUpperCase() &&
+          trimmed.length > 1 &&
+          dictionary[trimmed.charAt(0) + trimmed.slice(1).toLowerCase()]
+        ) {
+          return dictionary[trimmed.charAt(0) + trimmed.slice(1).toLowerCase()].toUpperCase();
+        }
+
+        // 6. Leading / Trailing Slash Fallbacks
+        if (trimmed.startsWith('/ ') && dictionary[trimmed.slice(2).trim()]) {
+          return `/ ${dictionary[trimmed.slice(2).trim()]}`;
+        }
+        if (trimmed.endsWith(' /') && dictionary[trimmed.slice(0, -2).trim()]) {
+          return `${dictionary[trimmed.slice(0, -2).trim()]} /`;
+        }
+
+        // 7. Dynamic Pattern Matches
+        // STEP 01 -> ETAPA 01 / ÉTAPE 01
+        const stepMatch = trimmed.match(/^STEP\s+(\d+)$/i);
+        if (stepMatch) {
+          return language === 'pt' ? `ETAPA ${stepMatch[1]}` : `ÉTAPE ${stepMatch[1]}`;
+        }
+
+        // ITEM 01 -> ITEM 01 / ARTICLE 01
+        const itemMatch = trimmed.match(/^ITEM\s+(\d+)$/i);
+        if (itemMatch) {
+          return language === 'pt' ? `ITEM ${itemMatch[1]}` : `ARTICLE ${itemMatch[1]}`;
+        }
+
+        // SHEET 01 OF 05 -> FICHA 01 DE 05 / FICHE 01 SUR 05
+        const sheetMatch = trimmed.match(/^SHEET\s+(\d+)\s+OF\s+(\d+)$/i);
+        if (sheetMatch) {
+          return language === 'pt'
+            ? `FICHA ${sheetMatch[1]} DE ${sheetMatch[2]}`
+            : `FICHE ${sheetMatch[1]} SUR ${sheetMatch[2]}`;
+        }
+
+        return undefined;
+      };
 
       let node: Node | null;
       while ((node = walker.nextNode())) {
@@ -46,28 +121,7 @@ export function TranslationBridge() {
             node.nodeValue = source;
           }
         } else {
-          let translated: string | undefined;
-
-          // 1. Exact match in dictionary
-          if (dictionary[trimmed]) {
-            translated = dictionary[trimmed];
-          }
-          // 2. Uppercase fallback (e.g. "FOOD" -> dictionary["Food"].toUpperCase())
-          else if (
-            trimmed === trimmed.toUpperCase() &&
-            trimmed.length > 1 &&
-            dictionary[trimmed.charAt(0) + trimmed.slice(1).toLowerCase()]
-          ) {
-            translated = dictionary[trimmed.charAt(0) + trimmed.slice(1).toLowerCase()].toUpperCase();
-          }
-          // 3. Leading slash fallback (e.g. "/ SERVICE CYCLE" -> "/ CICLO DE SERVIÇOS")
-          else if (trimmed.startsWith('/ ') && dictionary[trimmed.slice(2).trim()]) {
-            translated = `/ ${dictionary[trimmed.slice(2).trim()]}`;
-          }
-          // 4. Trailing slash fallback (e.g. "SERVICE CYCLE /" -> "CICLO DE SERVIÇOS /")
-          else if (trimmed.endsWith(' /') && dictionary[trimmed.slice(0, -2).trim()]) {
-            translated = `${dictionary[trimmed.slice(0, -2).trim()]} /`;
-          }
+          const translated = resolveTranslation(trimmed);
 
           if (translated) {
             const target = source.replace(trimmed, translated);

@@ -34,8 +34,9 @@ export function Services() {
                 <div className="eyebrow">STEP {s.id} / SERVICE CYCLE</div>
                 <h2>{s.title}</h2>
                 <p>{s.short}</p>
-                <Link to="/contact" className="text-dark">
-                  Discuss this step <ArrowUpRight size={15} />
+                <Link to="/contact" className="button sm white">
+                  <span>Discuss this step</span>
+                  <ArrowUpRight size={14} />
                 </Link>
               </div>
             </article>

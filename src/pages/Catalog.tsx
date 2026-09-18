@@ -998,10 +998,11 @@ Web: https://globalindustrialtechnologies.com
                 </ul>
                 <Link
                   to="/contact"
-                  className="button light full"
+                  className="button sm white full"
                   style={{ marginTop: 'auto', justifyContent: 'center' }}
                 >
-                  Request Quote for this Line <ArrowUpRight size={14} />
+                  <span>Request Quote for this Line</span>
+                  <ArrowUpRight size={14} />
                 </Link>
               </div>
             </div>
@@ -1018,11 +1019,13 @@ Web: https://globalindustrialtechnologies.com
           your factory footprint.
         </p>
         <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <button onClick={handleDownloadPdf} className="button light">
-            <Download size={15} /> Download PDF Catalog
+          <button onClick={handleDownloadPdf} className="button primary">
+            <Download size={15} />
+            <span>Download PDF Catalog</span>
           </button>
           <Link className="button glass-dark" to="/contact">
-            Start the conversation <ArrowUpRight size={16} />
+            <span>Start the conversation</span>
+            <ArrowUpRight size={16} />
           </Link>
         </div>
       </section>

@@ -26,6 +26,7 @@ import { Reveal } from '../components/common/Reveal';
 import { IMG } from '../data/assets';
 import { services } from '../data/services';
 import { industries } from '../data/industries';
+import { DossierBackgroundCanvas } from '../components/common/DossierBackgroundCanvas';
 
 function Hero() {
   return (
@@ -465,10 +466,8 @@ function InteractiveSpecificationDossier() {
     <section className="interactive-dossier-section">
       <div className="section">
         <div className="interactive-dossier-card frame">
-          {/* Ambient Lighting & CAD Grid Effects */}
-          <div className="dossier-glow-mesh" aria-hidden="true" />
-          <div className="dossier-cad-grid" aria-hidden="true" />
-          <div className="dossier-laser-sweep" aria-hidden="true" />
+          {/* Interactive High-Tech CAD Telemetry Canvas */}
+          <DossierBackgroundCanvas />
 
           {/* Corner Precision Crosshairs */}
           <div className="dossier-crosshair tl" aria-hidden="true" />
