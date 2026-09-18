@@ -306,7 +306,48 @@ a{color:inherit;text-decoration:none}button,input,textarea,select{font:inherit}b
 .mobile-menu-trigger.is-open .hamburger-lines i:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 .mobile-menu{position:fixed;z-index:1250;color:#fff}
 
-.eyebrow{font-size:9px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:#777a73}.light{color:#c4c5c0!important}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #1a1d18;
+  background: rgba(26, 29, 24, 0.06);
+  border: 1px solid rgba(26, 29, 24, 0.14);
+  padding: 6px 13px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+  width: fit-content;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent, #ffbd35);
+  box-shadow: 0 0 8px rgba(255, 189, 53, 0.7);
+  flex-shrink: 0;
+}
+
+.eyebrow.light {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.09) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.eyebrow.light::before {
+  background: #ffbd35;
+  box-shadow: 0 0 10px #ffbd35;
+}
 
 /* =========================================================
    ENHANCED HIGH-PERFORMANCE BUTTON SYSTEM & GLASS EFFECTS
@@ -1027,8 +1068,8 @@ footer{padding:76px max(5vw,24px) 22px;overflow:hidden}
   .section-rule{scroll-margin-top:76px}
 
   /* Stronger contrast for small labels and borders. */
-  .eyebrow{color:#5f625c}
-  .light{color:#cfd0cb!important}
+  .eyebrow{color:#1a1d18;font-size:10.5px}
+  .eyebrow.light{color:#ffffff!important}
   .section-head{margin-bottom:25px}
   .frame:before,.frame:after{width:10px;height:10px}
 }
@@ -3284,44 +3325,65 @@ body .nav.nav-hidden{
 }
 
 .phil-hallmark-card{
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  padding: 20px 22px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 22px 24px;
   display: flex;
   gap: 16px;
   align-items: flex-start;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease, background 0.28s ease, box-shadow 0.28s ease;
+  backdrop-filter: blur(12px);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.phil-hallmark-card::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 189, 53, 0.8), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .phil-hallmark-card:hover{
-  transform: translateY(-3px);
-  background: rgba(255, 189, 53, 0.06);
-  border-color: rgba(255, 189, 53, 0.5);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 16px rgba(255, 189, 53, 0.18);
+  transform: translateY(-4px);
+  background: linear-gradient(135deg, rgba(255, 189, 53, 0.09) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border-color: rgba(255, 189, 53, 0.55);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), 0 0 24px rgba(255, 189, 53, 0.2);
+}
+
+.phil-hallmark-card:hover::before{
+  opacity: 1;
 }
 
 .hallmark-idx{
   font: 700 13px 'Space Grotesk', sans-serif;
-  color: var(--accent);
-  background: rgba(255, 189, 53, 0.12);
-  padding: 4px 8px;
-  border-radius: 3px;
+  color: #ffbd35;
+  background: rgba(255, 189, 53, 0.14);
+  border: 1px solid rgba(255, 189, 53, 0.3);
+  padding: 6px 10px;
+  border-radius: 4px;
   line-height: 1;
+  flex-shrink: 0;
 }
 
 .hallmark-body strong{
   display: block;
-  font: 700 12.5px/1.2 'Space Grotesk', sans-serif;
+  font: 700 14px/1.3 'Space Grotesk', sans-serif;
   color: #ffffff;
-  letter-spacing: 0.02em;
-  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
 }
 
 .hallmark-body span{
   display: block;
-  font: 500 10px/1.45 'DM Sans', sans-serif;
-  color: #92978c;
+  font: 400 12.5px/1.55 'DM Sans', sans-serif;
+  color: #b2b7ac;
 }
 
 .phil-monolith-actions{
@@ -4704,58 +4766,8 @@ body .nav.nav-hidden{
 .phil-hallmarks-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 18px;
   margin-bottom: 44px;
-}
-
-.phil-hallmark-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 20px 22px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-  backdrop-filter: blur(8px);
-  transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.phil-hallmark-card:hover {
-  transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 189, 53, 0.45);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 189, 53, 0.1);
-}
-
-.hallmark-idx {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: #ffbd35;
-  line-height: 1;
-  padding-top: 2px;
-}
-
-.hallmark-body {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.hallmark-body strong {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: #ffffff;
-  letter-spacing: -0.01em;
-}
-
-.hallmark-body span {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11.5px;
-  line-height: 1.45;
-  color: #9fa498;
 }
 
 .phil-monolith-actions {

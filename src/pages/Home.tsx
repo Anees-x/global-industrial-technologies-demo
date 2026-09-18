@@ -354,20 +354,20 @@ function CompanyPhilosophyShowcase() {
             <div className="phil-status-pill">
               <span className="phil-status-ping" />
               <span className="phil-status-dot" />
-              <span>GIT // ENGINEERING MANIFESTO</span>
+              <span>GIT // OUR CORE PHILOSOPHY</span>
             </div>
             <div className="phil-datum-stamps">
-              <span>REF: 2026-SYS</span>
+              <span>ONE COMPLETE SYSTEM</span>
               <span className="sep">•</span>
-              <span>TOLERANCE: ±0.01MM</span>
+              <span>100% FACTORY TESTED</span>
               <span className="sep">•</span>
-              <span className="phil-gold-stamp">100% FAT VERIFIED</span>
+              <span className="phil-gold-stamp">LIFECYCLE SUPPORT</span>
             </div>
           </div>
 
           {/* Powerful Quote & Editorial Body */}
           <div className="phil-monolith-content">
-            <div className="phil-kicker-tag">THE INTEGRATION PHILOSOPHY</div>
+            <div className="phil-kicker-tag">HOW WE WORK</div>
 
             <h2 className="phil-monolith-quote">
               “WE DO NOT BELIEVE IN
@@ -376,9 +376,8 @@ function CompanyPhilosophyShowcase() {
             </h2>
 
             <p className="phil-monolith-subquote">
-              A single machine is only as capable as the line ecosystem connecting it. We engineer complete,
-              synchronized production architectures — processing, dosing, capping, conveying, and cleanrooms
-              operating under single-source engineering accountability.
+              A single machine cannot succeed on its own. We design complete, connected production lines —
+              bringing filling, capping, packaging, and cleanrooms together with one dedicated team responsible from start to finish.
             </p>
 
             {/* 3 Hallmark Architectural Pillars */}
@@ -386,24 +385,24 @@ function CompanyPhilosophyShowcase() {
               <div className="phil-hallmark-card">
                 <div className="hallmark-idx">01</div>
                 <div className="hallmark-body">
-                  <strong>Single-Source Ownership</strong>
-                  <span>Zero multi-vendor interface friction</span>
+                  <strong>One Responsible Partner</strong>
+                  <span>We manage your entire project from start to finish so you never deal with multiple competing vendors.</span>
                 </div>
               </div>
 
               <div className="phil-hallmark-card">
                 <div className="hallmark-idx">02</div>
                 <div className="hallmark-body">
-                  <strong>100% Pre-Shipment FAT</strong>
-                  <span>Tested with your actual product & containers</span>
+                  <strong>100% Tested Before Delivery</strong>
+                  <span>Every machine is thoroughly tested with your actual products and bottles before shipping to your site.</span>
                 </div>
               </div>
 
               <div className="phil-hallmark-card">
                 <div className="hallmark-idx">03</div>
                 <div className="hallmark-body">
-                  <strong>20-Year Duty Architecture</strong>
-                  <span>AISI 316L metallurgy & open Siemens S7 PLC</span>
+                  <strong>Built for Long-Term Reliability</strong>
+                  <span>High-grade stainless steel construction with globally standard parts that are easy to operate and maintain.</span>
                 </div>
               </div>
             </div>
@@ -415,7 +414,7 @@ function CompanyPhilosophyShowcase() {
                 <ArrowRight size={15} />
               </Link>
               <Link className="button dark" to="/about">
-                <span>Our Engineering DNA</span>
+                <span>About Our Approach</span>
                 <ArrowUpRight size={15} />
               </Link>
             </div>
@@ -445,27 +444,27 @@ function InteractiveSpecificationDossier() {
   const scopeHighlights = [
     {
       num: '01',
-      title: 'Primary Packaging Systems',
-      subtitle: 'Volumetric liquid, oil, cream, and powder dosing with servo magnetic torque capping and automated CIP/SIP flush integration.',
-      meta: '5 ml – 5,000 ml Range • Up to 6,000 BPH • AISI 316L Metallurgy • Siemens S7-1500 PLC'
+      title: 'Filling & Packaging Machines',
+      subtitle: 'Accurate filling and capping systems for liquids, oils, creams, and powders with easy automated cleaning.',
+      meta: '5 ml to 5 Liters • Up to 6,000 Bottles/Hour • Stainless Steel • Touchscreen Controls'
     },
     {
       num: '02',
-      title: 'Secondary Line Integration',
-      subtitle: 'Synchronized continuous self-adhesive labelling, optical OCR/barcode vision inspection, automated cartoners, and speed-matched conveyor handoffs.',
-      meta: '±0.5 mm Registration • Up to 12,000 BPH • Rejection Telemetry • End-of-Line Sync'
+      title: 'Labeling & Box Packaging',
+      subtitle: 'Automatic bottle labeling, camera inspection for barcodes, box packing, and smooth conveyor movement.',
+      meta: 'High-Precision Labeling • Up to 12,000 Bottles/Hour • Automatic Defect Check • Conveyor Sync'
     },
     {
       num: '03',
-      title: 'Modular Cleanroom Environments',
-      subtitle: 'Turnkey ISO Class 5 to 8 modular sandwich panel enclosures with H14 HEPA terminal filtration (99.995%) and positive pressure cascades.',
-      meta: 'ISO 14644-1 Compliant • +15 Pa Airlock Cascade • Temperature & Humidity Control'
+      title: 'Cleanrooms & Controlled Rooms',
+      subtitle: 'Pre-built modular cleanrooms with high-efficiency air filters, temperature control, and dust-free environments.',
+      meta: 'ISO Certified Standards • Air-Lock Doors • Full Temperature & Humidity Control'
     },
     {
       num: '04',
-      title: '100% Pre-Shipment FAT Qualification',
-      subtitle: 'Rigorous 72-hour burn-in trial runs using actual client containers and products, backed by complete IQ/OQ/PQ validation dossiers.',
-      meta: '100% Wet-Tested • Dimensional Inspection • Calibrated Protocol Clearance'
+      title: '100% Factory Testing Before Delivery',
+      subtitle: 'Every machine is fully tested with your actual containers and products before delivery to guarantee zero surprises.',
+      meta: 'Tested with Real Products • Full Quality Inspection • Complete Test Reports Included'
     }
   ];
 
@@ -492,11 +491,11 @@ function InteractiveSpecificationDossier() {
           <div className="dossier-console-head">
             <div className="dossier-kicker">
               <span className="dossier-kicker-dot" />
-              <span>DIGITAL TECHNICAL DOSSIER // 2026 ARCHIVE</span>
+              <span>PRODUCT CATALOG // 2026 OVERVIEW</span>
             </div>
             <div className="dossier-top-badge">
               <ShieldCheck size={13} />
-              <span>VALIDATED cGMP & ISO 9001</span>
+              <span>cGMP & ISO QUALITY CERTIFIED</span>
             </div>
           </div>
 
@@ -504,13 +503,12 @@ function InteractiveSpecificationDossier() {
           <div className="dossier-expanded-layout">
             <div className="dossier-header-block">
               <h2 className="dossier-spec-heading">
-                COMPLETE TECHNICAL MACHINERY & <br />
-                <span className="heading-highlight">DIGITAL SPECIFICATION DOSSIER.</span>
+                EXPLORE OUR COMPLETE <br />
+                <span className="heading-highlight">MACHINERY & SYSTEM CATALOG.</span>
               </h2>
 
               <p className="dossier-spec-summary">
-                Access complete engineering dimensions, multi-axis line schematics, cleanroom HVAC cascade
-                blueprints, and pre-shipment FAT validation protocols in our continuous digital catalog.
+                Browse complete technical details, machine dimensions, cleanroom setups, and testing guidelines in our easy-to-read digital catalog.
               </p>
             </div>
 
@@ -574,7 +572,7 @@ function InteractiveSpecificationDossier() {
             <div className="dossier-action-row">
               <Link className="button btn-catalog" to="/catalog">
                 <FileText size={15} />
-                <span>Open Interactive E-Catalog & PDF</span>
+                <span>Open E-Catalog & PDF</span>
                 <ArrowRight size={15} />
               </Link>
               <Link className="button glass" to="/catalog">
@@ -582,7 +580,7 @@ function InteractiveSpecificationDossier() {
                 <ArrowUpRight size={15} />
               </Link>
               <Link className="button dark" to="/products">
-                <span>Machinery Matrix</span>
+                <span>Browse All Machines</span>
               </Link>
             </div>
           </div>
