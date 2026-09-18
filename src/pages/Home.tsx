@@ -218,7 +218,7 @@ function CompanyPhilosophyShowcase() {
   return (
     <section className="home-philosophy-section">
       <div className="section">
-        <div className="eyebrow">03 / OUR CORE PHILOSOPHY</div>
+        <div className="eyebrow light">03 / OUR CORE PHILOSOPHY</div>
         <div className="home-phil-monolith frame">
           {/* Ambient Lighting & CAD Grid Effects */}
           <div className="phil-glow-mesh" aria-hidden="true" />
@@ -359,7 +359,7 @@ function InteractiveSpecificationDossier() {
   return (
     <section className="interactive-dossier-section">
       <div className="section">
-        <div className="eyebrow">05 / MACHINERY &amp; DIGITAL CATALOG</div>
+        <div className="eyebrow light">05 / MACHINERY &amp; DIGITAL CATALOG</div>
         <div className="interactive-dossier-card frame">
           {/* Interactive High-Tech CAD Telemetry Canvas */}
           <DossierBackgroundCanvas />
