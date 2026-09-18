@@ -9,7 +9,7 @@ export function Solutions() {
   return (
     <>
       <PageHero
-        label="SOLUTIONS / 02"
+        label="SOLUTIONS / 01"
         title={
           <>
             MACHINERY

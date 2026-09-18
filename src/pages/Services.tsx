@@ -11,7 +11,7 @@ export function Services() {
   return (
     <>
       <PageHero
-        label="SERVICES / 01"
+        label="SERVICES / 02"
         title={
           <>
             FROM UNDERSTANDING NEEDS
