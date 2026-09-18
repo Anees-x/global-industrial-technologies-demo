@@ -5729,14 +5729,17 @@ body .nav.nav-hidden{
   background: #ffffff;
   color: #11120f;
   border: 1px solid #d4d8cf;
-  border-radius: 2px;
-  padding: 48px 52px 42px;
+  border-radius: 4px;
+  padding: 44px 48px 36px;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.7),
     0 2px 6px rgba(0, 0, 0, 0.2);
   font-family: 'DM Sans', sans-serif;
-  overflow: hidden;
-  min-height: 1120px;
+  width: 100%;
+  max-width: 900px;
+  min-height: 1080px;
+  box-sizing: border-box;
+  flex-shrink: 0 !important;
   display: flex;
   flex-direction: column;
 }
@@ -6475,7 +6478,7 @@ body .nav.nav-hidden{
 
 
 /* =========================================================
-   RESPONSIVE ADJUSTMENTS FOR NEW V30 COMPONENTS
+   RESPONSIVE ADJUSTMENTS FOR TECHNICAL CAD PDF VIEWER & V30 COMPONENTS
    ========================================================= */
 
 @media(max-width: 1024px) {
@@ -6499,10 +6502,18 @@ body .nav.nav-hidden{
     grid-template-columns: 1fr 1fr;
   }
   .pdf-toolbar-nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    max-width: 100%;
+  }
+  .pdf-toolbar-nav::-webkit-scrollbar {
     display: none;
   }
   .pdf-sheet {
-    padding: 32px 24px;
+    padding: 36px 30px 30px;
+    min-height: auto;
+    flex-shrink: 0 !important;
   }
   .pdf-meta-box-grid,
   .pdf-feature-pillars,
@@ -6563,66 +6574,35 @@ body .nav.nav-hidden{
     width: 100%;
     justify-content: space-between;
   }
-  .pdf-canvas-viewport {
-    height: 65vh;
-    min-height: 380px;
-    max-height: 580px;
-    padding: 16px 10px 40px;
-    overflow-x: auto;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .pdf-canvas-document {
-    min-width: 680px;
-    gap: 24px;
-  }
-  .pdf-sheet {
-    min-height: auto;
-    padding: 24px 16px;
-  }
-  .pdf-doc-title {
-    font-size: 24px;
-  }
-  .pdf-schematic-drawing {
-    flex-direction: column;
-  }
-  .pdf-schematic-arrow {
-    transform: rotate(90deg);
-  }
-  .catalog-cat-grid {
-    grid-template-columns: 1fr;
-  }
-  .pdf-bottom-bar {
-    flex-direction: column;
-    height: auto;
-    padding: 14px;
-    gap: 10px;
-  }
-  .pdf-bottom-actions {
-    width: 100%;
-    flex-direction: column;
-  }
-  .pdf-bottom-actions .button {
+
+  /* ── Full Technical PDF Mobile Viewer ── */
+  .pdf-viewer-shell {
+    border-radius: 8px;
+    margin: 0;
     width: 100%;
   }
-}
 
-
-/* == PDF Mobile Toolbar Collapse (max-width: 768px) == */
-@media(max-width: 768px) {
   .pdf-toolbar {
-    padding: 8px 12px;
-    gap: 8px;
+    padding: 10px 12px;
+    gap: 10px;
+    height: auto;
+    flex-wrap: wrap;
   }
   .pdf-toolbar-left {
+    flex: 1;
+    min-width: 0;
     gap: 8px;
+  }
+  .pdf-doc-badge {
+    font-size: 8px;
+    padding: 4px 8px;
   }
   .pdf-doc-pages-info {
     display: none;
   }
-  .pdf-doc-badge {
-    font-size: 7.5px;
-    padding: 4px 8px;
+  .pdf-toolbar-right {
+    gap: 4px;
+    flex-shrink: 0;
   }
   .pdf-tool-btn {
     width: 28px;
@@ -6631,44 +6611,264 @@ body .nav.nav-hidden{
   .pdf-zoom-val-btn {
     padding: 0 6px;
     font-size: 8px;
+    height: 28px;
   }
-  .pdf-sheet {
-    padding: 22px 18px 18px;
+  .pdf-toolbar-nav {
+    display: flex !important;
+    width: 100%;
+    order: 3;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
-}
+  .pdf-toolbar-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .pdf-nav-btn {
+    padding: 6px 10px;
+    font-size: 8px;
+    flex-shrink: 0;
+  }
 
-/* == Extra small phones (max-width: 480px) == */
-@media(max-width: 480px) {
+  /* Viewport with butter-smooth mobile scrolling */
   .pdf-canvas-viewport {
-    height: 60vh;
-    min-height: 320px;
-    padding: 10px 6px 32px;
+    height: 72vh;
+    min-height: 480px;
+    max-height: 680px;
+    padding: 16px 8px 48px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    display: flex;
+    justify-content: center;
   }
+
   .pdf-canvas-document {
-    min-width: 580px;
-    gap: 18px;
+    width: 100%;
+    max-width: 100%;
+    gap: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+
+  /* Individual Sheet: expands naturally to full content height */
   .pdf-sheet {
-    padding: 16px 14px 16px;
+    width: 100%;
+    max-width: 100%;
+    min-height: auto !important;
+    height: auto !important;
+    flex-shrink: 0 !important;
+    padding: 22px 16px 20px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.15);
   }
+
   .pdf-sheet-header {
-    flex-wrap: wrap;
-    gap: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
     padding-bottom: 12px;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
-  .pdf-sheet-meta {
+  .pdf-sheet-brand {
+    gap: 10px;
+  }
+  .pdf-brand-title {
+    font-size: 10px;
+  }
+  .pdf-brand-sub {
+    font-size: 7px;
+  }
+  .pdf-sheet-meta-block {
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+  }
+  .pdf-meta-pills {
     flex-wrap: wrap;
     gap: 6px;
   }
+
+  .pdf-cover-hero {
+    margin-bottom: 22px;
+  }
+  .pdf-datum-strip {
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 7.5px;
+  }
+  .pdf-doc-title {
+    font-size: 20px;
+    line-height: 1.15;
+    margin: 0 0 8px;
+  }
+  .pdf-doc-subtitle {
+    font-size: 11.5px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .pdf-meta-box-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 12px;
+  }
+  .pdf-section-title {
+    font-size: 12px;
+    gap: 8px;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+  .pdf-text {
+    font-size: 11.5px;
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .pdf-feature-pillars {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .pdf-pillar {
+    padding: 12px;
+  }
+
+  .pdf-cycle-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    margin-bottom: 16px;
+    border: 1px solid #d4d8cf;
+    border-radius: 3px;
+  }
+  .pdf-spec-table {
+    min-width: 480px;
+    font-size: 10px;
+  }
+  .pdf-callout-box {
+    padding: 12px;
+    gap: 10px;
+    font-size: 10.5px;
+  }
+
+  .pdf-machinery-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .pdf-machine-spec-card {
+    padding: 10px 12px;
+  }
+  .pdf-machine-card-body {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .pdf-machine-thumb {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+  }
+
+  .pdf-cleanroom-layout {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .pdf-spec-table.compact {
+    font-size: 9.5px;
+  }
+  .pdf-schematic-box {
+    padding: 12px;
+  }
+  .pdf-schematic-drawing {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pdf-schematic-arrow {
+    transform: rotate(90deg);
+    margin: 4px auto;
+    font-size: 12px;
+  }
+  .pdf-schematic-zone {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .pdf-compliance-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .pdf-comp-item {
+    padding: 12px;
+  }
+
+  .pdf-signoff-box {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px 14px;
+    text-align: left;
+  }
+  .pdf-signoff-seal {
+    margin: 8px auto 0;
+    width: 52px;
+    height: 52px;
+  }
+
+  .pdf-sheet-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    font-size: 7px;
+    padding-top: 12px;
+    margin-top: 20px;
+  }
+
+  .catalog-cat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pdf-bottom-bar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 14px;
+    height: auto;
+  }
+  .pdf-bottom-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pdf-bottom-actions .button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ── Extra Small Phones (≤ 480px) ── */
+@media(max-width: 480px) {
+  .pdf-canvas-viewport {
+    height: 68vh;
+    min-height: 400px;
+    padding: 10px 4px 36px;
+  }
+  .pdf-sheet {
+    padding: 16px 12px 16px;
+    border-radius: 3px;
+    flex-shrink: 0 !important;
+  }
+  .pdf-doc-title {
+    font-size: 18px;
+  }
   .pdf-toolbar {
-    padding: 6px 10px;
+    padding: 8px 10px;
   }
   .pdf-tool-btn {
     width: 26px;
     height: 26px;
   }
-  .pdf-toolbar-right {
-    gap: 2px;
-  }
 }
+

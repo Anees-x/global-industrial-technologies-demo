@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -44,10 +44,39 @@ export function Catalog() {
   const scrollToSheet = (id: string) => {
     setActiveSheet(id);
     const el = document.getElementById(id);
-    if (el) {
+    const vp = viewportRef.current;
+    if (el && vp) {
+      const elOffset = el.offsetTop - vp.offsetTop;
+      vp.scrollTo({ top: Math.max(0, elOffset - 12), behavior: 'smooth' });
+    } else if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
+
+  useEffect(() => {
+    const vp = viewportRef.current;
+    if (!vp) return;
+
+    const sheetIds = ['sheet-cover', 'sheet-cycle', 'sheet-machinery', 'sheet-cleanroom', 'sheet-quality'];
+
+    const handleScroll = () => {
+      const vpScroll = vp.scrollTop + 100;
+      for (const id of sheetIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const elTop = el.offsetTop - vp.offsetTop;
+          const elBottom = elTop + el.offsetHeight;
+          if (vpScroll >= elTop && vpScroll < elBottom) {
+            setActiveSheet(id);
+            break;
+          }
+        }
+      }
+    };
+
+    vp.addEventListener('scroll', handleScroll, { passive: true });
+    return () => vp.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleDownloadPdf = () => {
     const lang = localStorage.getItem('git-language') || 'en';
