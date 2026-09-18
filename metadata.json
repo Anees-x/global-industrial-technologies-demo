@@ -1,0 +1,7 @@
+{
+  "name": "Global Industrial Technologies",
+  "description": "Turnkey machinery solutions, sourcing, installation, commissioning, cleanroom solutions and technical support for food, beverages, cosmetics and packaging.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
