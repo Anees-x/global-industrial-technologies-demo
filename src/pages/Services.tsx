@@ -11,7 +11,7 @@ export function Services() {
   return (
     <>
       <PageHero
-        label="OUR SERVICE CYCLE"
+        label="SERVICES / 01"
         title={
           <>
             FROM UNDERSTANDING NEEDS

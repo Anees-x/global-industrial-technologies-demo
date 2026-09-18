@@ -173,7 +173,19 @@ export const translations: TranslationsMap = {
     '100% Factory Testing Before Delivery': '100% de Testes em Fábrica Antes da Entrega',
     'Every machine is fully tested with your actual containers and products before delivery to guarantee zero surprises.': 'Cada máquina é totalmente testada com seus recipientes e produtos reais antes da entrega para garantir zero surpresas.',
     'Tested with Real Products • Full Quality Inspection • Complete Test Reports Included': 'Testado com Produtos Reais • Inspeção Completa de Qualidade • Relatórios de Teste Inclusos',
-    'Browse All Machines': 'Ver Todas as Máquinas'
+    'Browse All Machines': 'Ver Todas as Máquinas',
+    'COMPLETE PRODUCTION FLOW': 'FLUXO DE PRODUÇÃO COMPLETO',
+    'Connected Lines, Not Single Machines': 'Linhas Conectadas, Não Máquinas Isoladas',
+    'Buying machines from multiple vendors leads to mismatched speeds and frustrating delays. We supply and connect your entire production line so everything runs together smoothly with one responsible team.': 'Comprar máquinas de múltiplos fornecedores gera incompatibilidade de velocidades e atrasos frustrantes. Fornecemos e conectamos toda a sua linha de produção para que tudo funcione perfeitamente com uma única equipe responsável.',
+    'Synchronized Machine Speeds': 'Velocidades de Máquinas Sincronizadas',
+    'One Responsible Team': 'Uma Equipe Responsável',
+    'Ready-to-Run Handover': 'Entrega Pronta para Operar',
+    'COMPLETE USER MANUALS & REPORTS': 'MANUAIS COMPLETOS DO USUÁRIO & RELATÓRIOS',
+    'Testing Reports & User Guides': 'Relatórios de Testes & Guias do Usuário',
+    'Every machine delivery includes clear step-by-step operation manuals, electrical diagrams, international safety certifications, and certified pre-shipment test reports.': 'Cada entrega de máquina inclui manuais de operação passo a passo claros, diagramas elétricos, certificações internacionais de segurança e relatórios certificados de testes pré-embarque.',
+    'Pre-Shipment Test Reports': 'Relatórios de Teste Pré-Embarque',
+    'Full Quality & Safety Checks': 'Inspeções Completas de Qualidade & Segurança',
+    'Certified International Standards': 'Padrões Internacionais Certificados'
   },
   fr: {
     'HOME': 'ACCUEIL', 'Home': 'ACCUEIL', 'PRODUCTS': 'PRODUITS', 'Products': 'PRODUITS', 'SOLUTIONS': 'SOLUTIONS', 'Solutions': 'SOLUTIONS', 'SERVICES': 'SERVICES', 'Services': 'SERVICES', 'INDUSTRIES': 'INDUSTRIES', 'Industries': 'INDUSTRIES', 'PROJECTS': 'PROJETS', 'Projects': 'PROJETS', 'ABOUT': 'À PROPOS', 'About': 'À PROPOS', 'MORE': 'PLUS', 'More': 'PLUS', 'START A PROJECT': 'DÉMARRER UN PROJET', 'TURNKEY SYSTEMS': 'SYSTÈMES CLÉ EN MAIN', 'LANGUAGE': 'LANGUE', 'LANG': 'LANGUE', 'MENU': 'MENU', 'CLOSE': 'FERMER', 'SCROLL / EXPLORE': 'DÉFILER / EXPLORER', 'HIDE': 'MASQUER', 'SHOW NAV': 'AFFICHER NAV', 'GIT // SHOW NAV': 'GIT // AFFICHER LE MENU', 'TURNKEY INDUSTRIAL SYSTEMS': 'SYSTÈMES INDUSTRIELS CLÉ EN MAIN', 'GLOBAL INDUSTRIAL TECHNOLOGIES': 'GLOBAL INDUSTRIAL TECHNOLOGIES', 'ENGINEERED / DELIVERED': 'CONÇU / LIVRÉ',
@@ -346,6 +358,18 @@ export const translations: TranslationsMap = {
     '100% Factory Testing Before Delivery': '100% d’Essais en Usine Avant Livraison',
     'Every machine is fully tested with your actual containers and products before delivery to guarantee zero surprises.': 'Chaque machine est intégralement testée avec vos contenants et produits réels avant livraison afin d’assurer une mise en route sans faille.',
     'Tested with Real Products • Full Quality Inspection • Complete Test Reports Included': 'Testé avec Produits Réels • Contrôle Qualité Complet • Rapports d’Essais Inclus',
-    'Browse All Machines': 'Parcourir Toutes les Machines'
+    'Browse All Machines': 'Parcourir Toutes les Machines',
+    'COMPLETE PRODUCTION FLOW': 'FLUX DE PRODUCTION COMPLET',
+    'Connected Lines, Not Single Machines': 'Lignes Interconnectées, Pas de Machines Isolées',
+    'Buying machines from multiple vendors leads to mismatched speeds and frustrating delays. We supply and connect your entire production line so everything runs together smoothly with one responsible team.': 'Acheter des machines auprès de multiples fournisseurs engendre des écarts de cadence et des retards pénalisants. Nous fournissons et intégrons l’ensemble de votre ligne de production pour un fonctionnement fluide avec une équipe unique responsable.',
+    'Synchronized Machine Speeds': 'Cadences de Machines Synchronisées',
+    'One Responsible Team': 'Une Équipe Responsable Unique',
+    'Ready-to-Run Handover': 'Réception Clé en Main Prête à Tourner',
+    'COMPLETE USER MANUALS & REPORTS': 'MANUELS D’UTILISATION COMPLETS & RAPPORTS',
+    'Testing Reports & User Guides': 'Rapports d’Essais & Guides d’Utilisation',
+    'Every machine delivery includes clear step-by-step operation manuals, electrical diagrams, international safety certifications, and certified pre-shipment test reports.': 'Chaque livraison de machine comprend des manuels d’utilisation clairs pas à pas, des schémas électriques, des certifications de sécurité internationales et des rapports d’essais certifiés avant expédition.',
+    'Pre-Shipment Test Reports': 'Rapports d’Essais Avant Expédition',
+    'Full Quality & Safety Checks': 'Contrôles Complets de Qualité & Sécurité',
+    'Certified International Standards': 'Normes Internationales Certifiées'
   }
 };

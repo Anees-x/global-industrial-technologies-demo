@@ -145,23 +145,22 @@ export function About() {
               </div>
 
               <div className="philosophy-card-content">
-                <span className="card-eyebrow">INTEGRATED ECOSYSTEM</span>
-                <h3>Ecosystem Over Isolation</h3>
+                <span className="card-eyebrow">COMPLETE PRODUCTION FLOW</span>
+                <h3>Connected Lines, Not Single Machines</h3>
                 <p>
-                  Individual machine purchases create costly interface gaps on factory floors. We
-                  take single-source ownership of mechanical handoffs, PLC synchronization, line
-                  speeds, and utility routing to guarantee steady commercial output.
+                  Buying machines from multiple vendors leads to mismatched speeds and frustrating delays.
+                  We supply and connect your entire production line so everything runs together smoothly with one responsible team.
                 </p>
 
                 <div className="philosophy-card-tags">
                   <span className="card-tag">
-                    <CheckCircle2 size={12} /> Synchronized Speeds
+                    <CheckCircle2 size={12} /> Synchronized Machine Speeds
                   </span>
                   <span className="card-tag">
-                    <CheckCircle2 size={12} /> Single Contract
+                    <CheckCircle2 size={12} /> One Responsible Team
                   </span>
                   <span className="card-tag">
-                    <CheckCircle2 size={12} /> Turnkey Handover
+                    <CheckCircle2 size={12} /> Ready-to-Run Handover
                   </span>
                 </div>
 
@@ -188,23 +187,22 @@ export function About() {
               </div>
 
               <div className="philosophy-card-content">
-                <span className="card-eyebrow">AUDIT-READY DOSSIERS</span>
-                <h3>Validation & Technical Documentation</h3>
+                <span className="card-eyebrow">COMPLETE USER MANUALS & REPORTS</span>
+                <h3>Testing Reports & User Guides</h3>
                 <p>
-                  Every line delivery includes full engineering schematics, P&IDs, cGMP/CE
-                  declarations of conformity, IQ/OQ/PQ validation test protocols, and comprehensive
-                  multilingual maintenance manuals.
+                  Every machine delivery includes clear step-by-step operation manuals, electrical diagrams,
+                  international safety certifications, and certified pre-shipment test reports.
                 </p>
 
                 <div className="philosophy-card-tags">
                   <span className="card-tag">
-                    <FileCheck size={12} /> FAT Inspection Reports
+                    <FileCheck size={12} /> Pre-Shipment Test Reports
                   </span>
                   <span className="card-tag">
-                    <ShieldCheck size={12} /> IQ / OQ / PQ Protocols
+                    <ShieldCheck size={12} /> Full Quality & Safety Checks
                   </span>
                   <span className="card-tag">
-                    <FileText size={12} /> CE & cGMP Certified
+                    <FileText size={12} /> Certified International Standards
                   </span>
                 </div>
 
