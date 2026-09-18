@@ -145,15 +145,13 @@ export function Home() {
         </div>
       </section>
 
-      {/* =========================================================
-          AWARD-WINNING COMPANY PHILOSOPHY SHOWCASE (SECTION 02.5)
-          ========================================================= */}
+      {/* 03 / OUR CORE PHILOSOPHY */}
       <CompanyPhilosophyShowcase />
 
-      {/* 03 / INDUSTRIES */}
+      {/* 04 / INDUSTRIES */}
       <section className="industries-dark dark-section">
         <div className="section">
-          <div className="eyebrow light">03 / INDUSTRIES</div>
+          <div className="eyebrow light">04 / INDUSTRIES</div>
           <Words>BUILT AROUND THE PRODUCT, THE PROCESS AND THE OUTPUT.</Words>
           <div className="industry-grid">
             {industries.map((it, i) => (
@@ -189,129 +187,12 @@ export function Home() {
         </div>
       </section>
 
-      {/* 04 / THE 10-STEP JOURNEY */}
-      <section className="process section">
-        <div className="process-head">
-          <div className="eyebrow">04 / THE 10-STEP JOURNEY</div>
-          <div>
-            <Words>FROM FIRST NEED TO RUNNING PRODUCTION.</Words>
-            <p>
-              Our transparent 10-step service cycle covers every phase of your project — ensuring
-              quality machinery, flawless setup, and long-term reliability.
-            </p>
-          </div>
-        </div>
-        <div className="process-visual frame">
-          <img
-            src={IMG.engineer}
-            alt="Technical engineer working on industrial packaging machinery"
-            loading="lazy"
-          />
-          <div className="process-steps">
-            {services.map((s) => (
-              <Reveal key={s.id}>
-                <Link
-                  to={`/contact?service=${encodeURIComponent(`${s.id}. ${s.title}`)}&message=${encodeURIComponent(`I would like to discuss Step ${s.id}: ${s.title} for our facility.`)}`}
-                  className="step"
-                  style={{ textDecoration: 'none', color: 'inherit' }}
-                >
-                  <span>{s.id}</span>
-                  <strong>{s.title}</strong>
-                  <ArrowRight />
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 05 / MACHINERY SOLUTIONS */}
-      <section className="solutions-band">
-        <div className="section">
-          <div className="section-head">
-            <div className="eyebrow light">05 / MACHINERY SOLUTIONS</div>
-            <Link to="/solutions">
-              View solutions <ArrowUpRight size={15} />
-            </Link>
-          </div>
-          <div className="solution-feature">
-            <div>
-              <Words>THE RIGHT MACHINE IS ONLY THE START.</Words>
-              <p>
-                We connect processing, filling, packaging, conveying and automation into a
-                production flow that makes sense.
-              </p>
-              <Link className="button light" to="/solutions">
-                See machinery solutions <ArrowRight size={16} />
-              </Link>
-            </div>
-            <div className="solution-image frame">
-              <img src={IMG.cosmetics} alt="Cosmetics filling and capping machinery" loading="lazy" />
-              <span>FILL / CAP / PACK</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-          INTERACTIVE TECHNICAL SPECIFICATION & DOSSIER GATEWAY (SECTION 05.5)
-          ========================================================= */}
+      {/* 05 / MACHINERY & DIGITAL CATALOG */}
       <InteractiveSpecificationDossier />
 
-      {/* 06 / CLEANROOMS */}
-      <section className="cleanroom section">
-        <div className="clean-copy">
-          <div className="eyebrow">06 / CLEANROOMS</div>
-          <Words>CONTROLLED ENVIRONMENTS. ENGINEERED AS PART OF THE SYSTEM.</Words>
-          <p>
-            For projects requiring controlled environments, cleanroom scope can be coordinated
-            alongside machinery and production requirements.
-          </p>
-          <Link
-            className="button dark"
-            to={`/contact?project=${encodeURIComponent('Cleanroom Solution')}&industry=Cleanroom+%2F+Pharma&message=${encodeURIComponent('We would like to consult on a turnkey modular cleanroom and HVAC cascade enclosure.')}`}
-          >
-            Explore cleanroom solutions <ArrowRight size={16} />
-          </Link>
-        </div>
-        <div className="clean-image frame">
-          <img src={IMG.cleanroom} alt="Modern cleanroom production environment" loading="lazy" />
-          <span>CONTROLLED ENVIRONMENT / 06</span>
-        </div>
-      </section>
-
-      {/* 07 / ONGOING SUPPORT */}
-      <section className="support section">
-        <div className="support-grid">
-          <div>
-            <div className="eyebrow">07 / ONGOING SUPPORT</div>
-            <Words>THE PROJECT DOESN'T END AT START-UP.</Words>
-          </div>
-          <div className="support-copy">
-            <div className="support-image frame">
-              <img
-                src={IMG.commissioning}
-                alt="Technical support around automated machinery"
-                loading="lazy"
-              />
-            </div>
-            <p>
-              After installation, we continue to support you with maintenance, troubleshooting,
-              repairs, spare parts, and technical assistance.
-            </p>
-            <Link
-              to={`/contact?service=${encodeURIComponent('9. Ongoing Support & Spare Parts')}&message=${encodeURIComponent('Requesting maintenance support, spare parts availability, or technical service for our operating equipment.')}`}
-              className="text-dark"
-            >
-              Talk to our team <ArrowUpRight size={15} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* 08 / FINAL CTA */}
+      {/* 06 / FINAL CTA */}
       <section className="final-cta">
-        <div className="eyebrow">08 / START A PROJECT</div>
+        <div className="eyebrow">06 / START A PROJECT</div>
         <Words>READY TO START YOUR NEXT PROJECT?</Words>
         <p>Tell us your product, capacity, and timeline. We'll build the scope around it.</p>
         <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>

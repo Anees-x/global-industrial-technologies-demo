@@ -6,7 +6,7 @@ interface GitLogoMarkProps {
 }
 
 export function GitLogoMark({ className = '', dark = false }: GitLogoMarkProps) {
-  const primaryFill = dark ? 'url(#gitDarkCharcoal)' : 'url(#gitPlatinumGrad)';
+  const primaryFill = dark ? 'url(#gitDarkGrad)' : 'url(#gitPlatGrad)';
 
   return (
     <svg
@@ -20,33 +20,32 @@ export function GitLogoMark({ className = '', dark = false }: GitLogoMarkProps) 
     >
       <defs>
         {/* Metallic platinum gradient for primary letters */}
-        <linearGradient id="gitPlatinumGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop offset="45%" stopColor="#f3f5f0" />
-          <stop offset="100%" stopColor="#d5d9cf" />
+        <linearGradient id="gitPlatGrad" x1="0" y1="0" x2="0" y2="24" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#FFFFFF" />
+          <stop offset="40%" stopColor="#EFF2EB" />
+          <stop offset="100%" stopColor="#CCD1C6" />
         </linearGradient>
 
         {/* Engineering gold gradient for core I */}
-        <linearGradient id="gitGoldGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#ffea9f" />
-          <stop offset="45%" stopColor="#ffbd35" />
-          <stop offset="100%" stopColor="#d49310" />
+        <linearGradient id="gitGoldGrad" x1="0" y1="0" x2="0" y2="24" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#FFE89E" />
+          <stop offset="50%" stopColor="#FFBD35" />
+          <stop offset="100%" stopColor="#D99411" />
         </linearGradient>
 
         {/* Dark charcoal gradient for dark mode fallback */}
-        <linearGradient id="gitDarkCharcoal" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#181a16" />
-          <stop offset="100%" stopColor="#0a0b09" />
+        <linearGradient id="gitDarkGrad" x1="0" y1="0" x2="0" y2="24" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#1E201C" />
+          <stop offset="100%" stopColor="#0B0C0A" />
         </linearGradient>
       </defs>
 
       {/* Letter G (Solid Precision Engineering Path) */}
       <path
-        d="M 21 3 H 6 C 3.2 3 1 5.2 1 8 V 16 C 1 18.8 3.2 21 6 21 H 21 V 12 H 11 V 15 H 17.5 V 18 H 6 C 4.9 18 4 17.1 4 16 V 8 C 4 6.9 4.9 6 6 6 H 21 V 3 Z"
+        d="M 22 3 H 7 C 4.2 3 2 5.2 2 8 V 16 C 2 18.8 4.2 21 7 21 H 22 V 11.5 H 12 V 14.5 H 18 V 17.5 H 7 C 6.2 17.5 5.5 16.8 5.5 16 V 8 C 5.5 7.2 6.2 6.5 7 6.5 H 22 V 3 Z"
         fill={primaryFill}
       />
-      {/* Precision corner accent on G */}
-      <circle cx="21" cy="3" r="0.75" fill="#ffbd35" />
+      <rect x="20.5" y="2" width="2" height="2" fill="#FFBD35" rx="0.5" />
 
       {/* Letter I (Gold Core Monolith) */}
       <rect
@@ -54,29 +53,27 @@ export function GitLogoMark({ className = '', dark = false }: GitLogoMarkProps) 
         y="3"
         width="7"
         height="18"
+        rx="1.5"
         fill="url(#gitGoldGrad)"
-        rx="1"
         className="git-logo-core"
       />
-      {/* Precision core center axis line */}
       <line
         x1="33"
-        y1="5"
+        y1="5.5"
         x2="33"
-        y2="19"
-        stroke="#ffffff"
-        strokeWidth="0.9"
-        strokeOpacity="0.5"
+        y2="18.5"
+        stroke="#FFFFFF"
+        strokeWidth="1"
+        strokeOpacity="0.6"
         strokeLinecap="round"
       />
 
       {/* Letter T (Solid Precision Engineering Path) */}
       <path
-        d="M 45 3 H 67 V 6 H 58.5 V 21 H 53.5 V 6 H 45 V 3 Z"
+        d="M 44 3 H 66 V 6.5 H 57.5 V 21 H 52.5 V 6.5 H 44 V 3 Z"
         fill={primaryFill}
       />
-      {/* Precision corner accent on T */}
-      <circle cx="45" cy="3" r="0.75" fill="#ffbd35" />
+      <rect x="43.5" y="2" width="2" height="2" fill="#FFBD35" rx="0.5" />
     </svg>
   );
 }

@@ -1,36 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
   <defs>
-    <linearGradient id="logoPlatinum" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="50%" stop-color="#f0f2ee"/>
-      <stop offset="100%" stop-color="#d2d6ce"/>
+    <linearGradient id="iconPlat" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#EFF2EB"/>
+      <stop offset="100%" stop-color="#CCD1C6"/>
     </linearGradient>
-    <linearGradient id="logoGold" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#ffe699"/>
-      <stop offset="50%" stop-color="#ffbd35"/>
-      <stop offset="100%" stop-color="#d49310"/>
+    <linearGradient id="iconGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFE89E"/>
+      <stop offset="50%" stop-color="#FFBD35"/>
+      <stop offset="100%" stop-color="#D99411"/>
     </linearGradient>
   </defs>
+  
   <rect width="64" height="64" rx="14" fill="#080908"/>
-  <rect x="2" y="2" width="60" height="60" rx="12" stroke="rgba(255,255,255,0.14)" stroke-width="1.2"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="12.5" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
   
-  <!-- Datum lines -->
-  <line x1="8" y1="12" x2="56" y2="12" stroke="rgba(255,255,255,0.22)" stroke-width="0.8" stroke-dasharray="4 3"/>
-  <line x1="8" y1="52" x2="56" y2="52" stroke="rgba(255,255,255,0.22)" stroke-width="0.8" stroke-dasharray="4 3"/>
+  <!-- Precision Corner Markers -->
+  <circle cx="9" cy="9" r="1.5" fill="#FFBD35" fill-opacity="0.8"/>
+  <circle cx="55" cy="9" r="1.5" fill="#FFBD35" fill-opacity="0.8"/>
+  <circle cx="9" cy="55" r="1.5" fill="#FFBD35" fill-opacity="0.8"/>
+  <circle cx="55" cy="55" r="1.5" fill="#FFBD35" fill-opacity="0.8"/>
   
-  <!-- Calibration precision tick marks at 4 corners -->
-  <line x1="8" y1="9" x2="8" y2="15" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"/>
-  <line x1="56" y1="9" x2="56" y2="15" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"/>
-  <line x1="8" y1="49" x2="8" y2="55" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"/>
-  <line x1="56" y1="49" x2="56" y2="55" stroke="rgba(255,255,255,0.35)" stroke-width="0.8"/>
+  <!-- Letter G -->
+  <path d="M 23 20 H 13 C 9.5 20 7 22.5 7 26 V 38 C 7 41.5 9.5 44 13 44 H 23 V 31.5 H 14.5 V 35.5 H 19 V 40 H 13 C 11.2 40 10.5 39.2 10.5 38 V 26 C 10.5 24.8 11.2 24 13 24 H 23 V 20 Z" fill="url(#iconPlat)"/>
   
-  <!-- G (Platinum Gradient) -->
-  <path d="M 23 20 H 13 C 10 20 8 22.5 8 25.5 V 38.5 C 8 41.5 10 44 13 44 H 23 V 33 H 16 V 36.5 H 20 V 39.5 H 13 C 11.5 39.5 10.5 38.5 10.5 37 V 27 C 10.5 25.5 11.5 24.5 13 24.5 H 23 V 20 Z" fill="url(#logoPlatinum)"/>
+  <!-- Letter I (Gold Core Monolith) -->
+  <rect x="28" y="20" width="8" height="24" rx="2" fill="url(#iconGold)"/>
+  <line x1="32" y1="23" x2="32" y2="41" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.6" stroke-linecap="round"/>
   
-  <!-- I (Gold Gradient Core) -->
-  <rect x="28" y="20" width="7" height="24" fill="url(#logoGold)" rx="1"/>
-  <line x1="31.5" y1="22" x2="31.5" y2="42" stroke="#ffffff" stroke-width="0.8" stroke-opacity="0.45" stroke-linecap="round"/>
-  
-  <!-- T (Platinum Gradient) -->
-  <path d="M 40 20 H 56 V 24.5 H 50 V 44 H 45.5 V 24.5 H 40 V 20 Z" fill="url(#logoPlatinum)"/>
+  <!-- Letter T -->
+  <path d="M 41 20 H 57 V 24.5 H 51.5 V 44 H 46.5 V 24.5 H 41 V 20 Z" fill="url(#iconPlat)"/>
 </svg>

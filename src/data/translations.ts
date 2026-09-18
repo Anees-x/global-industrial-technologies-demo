@@ -185,7 +185,9 @@ export const translations: TranslationsMap = {
     'Every machine delivery includes clear step-by-step operation manuals, electrical diagrams, international safety certifications, and certified pre-shipment test reports.': 'Cada entrega de máquina inclui manuais de operação passo a passo claros, diagramas elétricos, certificações internacionais de segurança e relatórios certificados de testes pré-embarque.',
     'Pre-Shipment Test Reports': 'Relatórios de Teste Pré-Embarque',
     'Full Quality & Safety Checks': 'Inspeções Completas de Qualidade & Segurança',
-    'Certified International Standards': 'Padrões Internacionais Certificados'
+    'Certified International Standards': 'Padrões Internacionais Certificados',
+    '04 / INDUSTRIES': '04 / SETORES',
+    '06 / START A PROJECT': '06 / INICIAR UM PROJETO'
   },
   fr: {
     'HOME': 'ACCUEIL', 'Home': 'ACCUEIL', 'PRODUCTS': 'PRODUITS', 'Products': 'PRODUITS', 'SOLUTIONS': 'SOLUTIONS', 'Solutions': 'SOLUTIONS', 'SERVICES': 'SERVICES', 'Services': 'SERVICES', 'INDUSTRIES': 'INDUSTRIES', 'Industries': 'INDUSTRIES', 'PROJECTS': 'PROJETS', 'Projects': 'PROJETS', 'ABOUT': 'À PROPOS', 'About': 'À PROPOS', 'MORE': 'PLUS', 'More': 'PLUS', 'START A PROJECT': 'DÉMARRER UN PROJET', 'TURNKEY SYSTEMS': 'SYSTÈMES CLÉ EN MAIN', 'LANGUAGE': 'LANGUE', 'LANG': 'LANGUE', 'MENU': 'MENU', 'CLOSE': 'FERMER', 'SCROLL / EXPLORE': 'DÉFILER / EXPLORER', 'HIDE': 'MASQUER', 'SHOW NAV': 'AFFICHER NAV', 'GIT // SHOW NAV': 'GIT // AFFICHER LE MENU', 'TURNKEY INDUSTRIAL SYSTEMS': 'SYSTÈMES INDUSTRIELS CLÉ EN MAIN', 'GLOBAL INDUSTRIAL TECHNOLOGIES': 'GLOBAL INDUSTRIAL TECHNOLOGIES', 'ENGINEERED / DELIVERED': 'CONÇU / LIVRÉ',
@@ -370,6 +372,8 @@ export const translations: TranslationsMap = {
     'Every machine delivery includes clear step-by-step operation manuals, electrical diagrams, international safety certifications, and certified pre-shipment test reports.': 'Chaque livraison de machine comprend des manuels d’utilisation clairs pas à pas, des schémas électriques, des certifications de sécurité internationales et des rapports d’essais certifiés avant expédition.',
     'Pre-Shipment Test Reports': 'Rapports d’Essais Avant Expédition',
     'Full Quality & Safety Checks': 'Contrôles Complets de Qualité & Sécurité',
-    'Certified International Standards': 'Normes Internationales Certifiées'
+    'Certified International Standards': 'Normes Internationales Certifiées',
+    '04 / INDUSTRIES': '04 / INDUSTRIES',
+    '06 / START A PROJECT': '06 / DÉMARRER UN PROJET'
   }
 };
