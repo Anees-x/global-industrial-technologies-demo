@@ -37,7 +37,10 @@ export function Projects() {
                   Project content can be replaced with the actual scope, machinery supplied,
                   installation and operational outcome.
                 </p>
-                <Link to="/contact" className="button sm white">
+                <Link
+                  to={`/contact?project=${encodeURIComponent(t)}&industry=${encodeURIComponent(tag)}&message=${encodeURIComponent(`I would like to request technical details, scope of work, and case study parameters for: ${t} (${tag}).`)}`}
+                  className="button sm white"
+                >
                   <span>Request project details</span>
                   <ArrowUpRight size={14} />
                 </Link>

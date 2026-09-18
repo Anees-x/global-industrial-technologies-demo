@@ -59,7 +59,10 @@ export function Products() {
                   </ul>
                 </div>
                 <div className="product-card-actions">
-                  <Link to="/contact" className="button sm white">
+                  <Link
+                    to={`/contact?product=${encodeURIComponent(product.name)}&industry=${encodeURIComponent(product.type)}&message=${encodeURIComponent(`I would like to request technical specifications, custom configuration, and lead time for: ${product.name} (${product.type}).`)}`}
+                    className="button sm white"
+                  >
                     <span>Request configuration</span>
                     <ArrowUpRight size={14} />
                   </Link>
@@ -86,7 +89,10 @@ export function Products() {
           <Link className="button btn-catalog" to="/catalog">
             <FileText size={15} /> E-Catalog & PDF
           </Link>
-          <Link className="button light" to="/contact">
+          <Link
+            className="button light"
+            to={`/contact?subject=${encodeURIComponent('Machinery Line Inquiry')}&message=${encodeURIComponent('We would like to discuss our product specifications, required output rate, and facility requirements to determine the right machinery solution.')}`}
+          >
             Discuss a requirement <ArrowRight size={16} />
           </Link>
         </div>

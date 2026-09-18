@@ -25,11 +25,14 @@ import { GitLogoMark } from '../components/common/GitLogoMark';
 import { IMG } from '../data/assets';
 import { products } from '../data/products';
 import { services } from '../data/services';
+import { generateCatalogPdf } from '../utils/pdfGenerator';
 
 export function Catalog() {
   const [zoomLevel, setZoomLevel] = useState(100);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [activeSheet, setActiveSheet] = useState('sheet-cover');
+  const [isDownloadingPdf, setIsDownloadingPdf] = useState(false);
+  const [pdfStatus, setPdfStatus] = useState('');
   const pdfContainerRef = useRef<HTMLDivElement>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
 
@@ -78,208 +81,18 @@ export function Catalog() {
     return () => vp.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleDownloadPdf = () => {
-    const lang = localStorage.getItem('git-language') || 'en';
-    const element = document.createElement('a');
-    let catalogData = '';
-    let fileName = 'GIT_Industrial_Machinery_Catalog_2026.txt';
-
-    if (lang === 'pt') {
-      fileName = 'GIT_Catalogo_Maquinas_Industriais_2026.txt';
-      catalogData = `
-================================================================================
-GLOBAL INDUSTRIAL TECHNOLOGIES (GIT)
-CATÁLOGO DE SISTEMAS TÉCNICOS E MÁQUINAS — EDIÇÃO 2026
-REF. DO DOCUMENTO: GIT-SPEC-CAT-2026-REV3
-VALIDAÇÃO: cGMP / ISO 9001:2015 / CERTIFICADO CE
-================================================================================
-
-1. VISÃO GERAL EXECUTIVA E ARQUITETURA DE INTEGRAÇÃO
-A Global Industrial Technologies fornece linhas completas de embalagem industrial,
-processamento e produção em salas limpas de fonte única. Eliminamos o atrito
-de interface multifornecedor assumindo total responsabilidade 'chave na mão',
-desde o projeto inicial da linha em CAD até a aprovação final no local.
-
-2. O CICLO COMPLETO DE SERVIÇO EM 10 ETAPAS
-- Etapa 01: Avaliação de Necessidades e Consulta de Layout da Fábrica
-- Etapa 02: Seleção de Máquinas e Matriz de Aquisição
-- Etapa 03: Testes de Aceitação de Fábrica (FAT) 100% Pré-Envio
-- Etapa 04: Frete Seguro, Desembaraço Aduaneiro e Entrega no Local
-- Etapa 05: Configuração de Instalação Mecânica e Elétrica
-- Etapa 06: Comissionamento de Linha a Seco e a Úmido
-- Etapa 07: Treinamento Técnico da Equipe e Certificação de Operadores
-- Etapa 08: Liberação de Protocolos de Validação IQ / OQ / PQ
-- Etapa 09: Kits de Peças de Reposição para 2 Anos e Suporte 24/7
-- Etapa 10: Otimização Completa do Ciclo de Vida Turnkey
-
-3. ESPECIFICAÇÕES DOS EQUIPAMENTOS PRINCIPAIS DE PRODUÇÃO
-${products
-  .map(
-    (p) => `
-[ITEM ${p.id}] ${p.name.toUpperCase()} (${p.type})
---------------------------------------------------------------------------------
-Especificações Principais:
-${p.specs.map((s) => `  * ${s}`).join('\n')}
-Automação e Controle: PLC Siemens S7-1500 + Ecrã Tátil IHM Simatic Comfort
-Metalurgia de Contato: Aço Inoxidável AISI 316L (Polimento espelhado Ra < 0.4 µm)
-Estrutura e Gabinete: Aço Inoxidável AISI 304 / Vidro de Segurança Temperado
-Conformidade: Marcação CE, Padrões cGMP, ISO 9001:2015
-`
-  )
-  .join('')}
-
-4. ARQUITETURA DE SALAS LIMPAS MODULARES E HVAC
-- Estrutura: Painéis Sanduíche de Parede Dupla de 50mm (PIR / Lã de Rocha Não Combustível)
-- Acabamento Superficial: PVDF Antiestático / Poliuretano de Grau Alimentar
-- Filtragem: Filtros HEPA H14 (Eficiência 99,995% @ 0.3 µm MPPS)
-- Trocas de Ar: 20 a 60 ACH em ISO Classe 5 a ISO Classe 8 (cGMP Grau A–D)
-- Diferencial de Cascata: Cascata de Pressão Positiva de +15 Pa entre Vestiários e Enchimento
-
-5. GARANTIA DE QUALIDADE E PROTOCOLO DE VALIDAÇÃO FAT
-Nenhuma máquina sai sem aprovação por escrito do protocolo FAT:
-- Teste a úmido 100% com recipientes reais do cliente e fluidos de viscosidade correspondente
-- Registro completo de telemetria dos sensores: Precisão de dosagem ±0,5%, Tolerância de torque ±0,05 Nm
-- Dossiê completo de validação IQ/OQ e kit de peças de reposição para 2 anos
-
-CONTATO E ARQUIVO TÉCNICO:
-Global Industrial Technologies
-Web: https://globalindustrialtechnologies.com
-================================================================================
-      `.trim();
-    } else if (lang === 'fr') {
-      fileName = 'GIT_Catalogue_Machines_Industrielles_2026.txt';
-      catalogData = `
-================================================================================
-GLOBAL INDUSTRIAL TECHNOLOGIES (GIT)
-CATALOGUE DE SYSTÈMES TECHNIQUES ET MACHINES — ÉDITION 2026
-RÉF. DU DOCUMENT: GIT-SPEC-CAT-2026-REV3
-VALIDATION: cGMP / ISO 9001:2015 / CERTIFIÉ CE
-================================================================================
-
-1. APERÇU EXÉCUTIF ET ARCHITECTURE D'INTÉGRATION
-Global Industrial Technologies fournit des lignes complètes de conditionnement
-industriel, de traitement et de production en salle blanche à source unique.
-Nous éliminons les frictions d'interface multifournisseurs en assumant l'entière
-responsabilité clé en main, de la conception initiale CAO à la réception finale.
-
-2. LE CYCLE COMPLET DE SERVICE EN 10 ÉTAPES
-- Étape 01: Évaluation des Besoins et Consultation d'Implantation d'Usine
-- Étape 02: Sélection des Machines et Matrice d'Approvisionnement
-- Étape 03: Tests de Réception en Usine (FAT) à 100% Avant Expédition
-- Étape 04: Fret Sécurisé, Dédouanement et Livraison sur Site
-- Étape 05: Installation Mécanique et Électrique
-- Étape 06: Mise en Service de Ligne à Sec et en Humide
-- Étape 07: Formation du Personnel Technique et Certification des Opérateurs
-- Étape 08: Validation des Protocoles IQ / OQ / PQ
-- Étape 09: Kits de Pièces Détachées pour 2 Ans et Support Technique 24/7
-- Étape 10: Optimisation Complète du Cycle de Vie Clé en Main
-
-3. SPÉCIFICATIONS DES ÉQUIPEMENTS DE PRODUCTION PRINCIPAUX
-${products
-  .map(
-    (p) => `
-[ARTICLE ${p.id}] ${p.name.toUpperCase()} (${p.type})
---------------------------------------------------------------------------------
-Spécifications Principales:
-${p.specs.map((s) => `  * ${s}`).join('\n')}
-Automatisation et Contrôle: Automate Siemens S7-1500 + Écran Tactile IHM Simatic Comfort
-Métallurgie de Contact: Acier Inoxydable AISI 316L (Finition miroir Ra < 0.4 µm)
-Châssis et Enceinte: Acier Inoxydable AISI 304 / Verre de Sécurité Trempé
-Conformité: Marquage CE, Normes cGMP, ISO 9001:2015
-`
-  )
-  .join('')}
-
-4. ARCHITECTURE SALLES BLANCHES MODULAIRES ET CVC
-- Enceinte: Panneaux Sandwich Double Peau de 50 mm (PIR / Laine de Roche Incombustible)
-- Finition de Surface: PVDF Antistatique / Polyuréthane de Qualité Alimentaire
-- Filtration: Filtres HEPA H14 (Efficacité 99,995 % @ 0.3 µm MPPS)
-- Renouvellements d'Air: 20 à 60 ACH pour ISO Classe 5 à ISO Classe 8 (cGMP Grade A–D)
-- Différentiel de Cascade: Cascade de Pression Positive de +15 Pa entre Vestiaires et Remplissage
-
-5. ASSURANCE QUALITÉ ET GARANTIE DE VALIDATION FAT
-Aucune machine ne part sans signature écrite du protocole FAT:
-- Test en conditions réelles à 100% avec les contenants réels du client et fluides adaptés
-- Enregistrement télémétrique complet des capteurs: Précision de dosage ±0,5%, Tolérance de couple ±0,05 Nm
-- Dossier complet de validation IQ/OQ et kit de pièces détachées pour 2 ans
-
-CONTACT ET ARCHIVE DU DOSSIER TECHNIQUE:
-Global Industrial Technologies
-Web: https://globalindustrialtechnologies.com
-================================================================================
-      `.trim();
-    } else {
-      fileName = 'GIT_Industrial_Machinery_Catalog_2026.txt';
-      catalogData = `
-================================================================================
-GLOBAL INDUSTRIAL TECHNOLOGIES (GIT)
-TECHNICAL SYSTEMS & MACHINERY CATALOGUE — 2026 EDITION
-DOCUMENT REF: GIT-SPEC-CAT-2026-REV3
-VALIDATION: cGMP / ISO 9001:2015 / CE CERTIFIED
-================================================================================
-
-1. EXECUTIVE OVERVIEW & INTEGRATION ARCHITECTURE
-Global Industrial Technologies delivers complete single-source industrial packaging,
-processing, and cleanroom production lines. We eliminate multi-vendor interface
-friction by taking full turnkey accountability from initial CAD line design to 
-final site sign-off.
-
-2. THE COMPLETE 10-STEP SERVICE CYCLE
-- Step 01: Needs Assessment & Plant Layout Consultation
-- Step 02: Machinery Selection & Sourcing Matrix
-- Step 03: 100% Pre-Shipment Factory Acceptance Testing (FAT)
-- Step 04: Secure Freight, Customs Clearance & Site Delivery
-- Step 05: Mechanical & Electrical Installation Setup
-- Step 06: Dry & Wet Line Commissioning
-- Step 07: Technical Staff Training & Operator Certification
-- Step 08: IQ / OQ / PQ Validation Protocol Clearance
-- Step 09: 2-Year Spare Parts Kits & 24/7 Engineering Support
-- Step 10: Complete Turnkey Lifecycle Optimization
-
-3. CORE PRODUCTION EQUIPMENT SPECIFICATIONS
-${products
-  .map(
-    (p) => `
-[ITEM ${p.id}] ${p.name.toUpperCase()} (${p.type})
---------------------------------------------------------------------------------
-Key Specifications:
-${p.specs.map((s) => `  * ${s}`).join('\n')}
-Automation & Control: Siemens S7-1500 PLC + Simatic Comfort HMI Touchscreen
-Contact Metallurgy: AISI 316L Stainless Steel (Ra < 0.4 µm mirror finish)
-Frame & Enclosure: AISI 304 Stainless Steel / Toughened Safety Glass
-Compliance: CE Marking, cGMP Standards, ISO 9001:2015
-`
-  )
-  .join('')}
-
-4. MODULAR CLEANROOM & HVAC ARCHITECTURE
-- Enclosure: 50mm Double-Skin Sandwich Panels (PIR / Non-Combustible Rockwool Core)
-- Surface Finish: Antistatic PVDF / Food-Grade Polyurethane (Chemical Resistant)
-- Filtration: H14 HEPA Filters (99.995% Efficiency @ 0.3 µm MPPS)
-- Air Changes: 20 to 60 ACH across ISO Class 5 to ISO Class 8 (cGMP Grade A–D)
-- Cascade Differential: +15 Pa Positive Pressure Cascade across Gowning & Filling
-
-5. QUALITY ASSURANCE & FAT VALIDATION GUARANTEE
-No machinery departs without written FAT protocol sign-off:
-- 100% Wet-tested run using actual client containers & viscosity-matched fluids
-- Full sensor telemetry recording: Dosing accuracy ±0.5%, Torque tolerance ±0.05 Nm
-- Complete IQ/OQ validation dossier & 2-year consumable spare parts kit
-
-CONTACT & TECHNICAL DOSSIER ARCHIVE:
-Global Industrial Technologies
-Web: https://globalindustrialtechnologies.com
-================================================================================
-      `.trim();
+  const handleDownloadPdf = async () => {
+    if (isDownloadingPdf) return;
+    setIsDownloadingPdf(true);
+    try {
+      await generateCatalogPdf((status) => setPdfStatus(status));
+    } catch (err) {
+      console.error('Error generating PDF:', err);
+      window.print();
+    } finally {
+      setIsDownloadingPdf(false);
+      setPdfStatus('');
     }
-
-    const blob = new Blob([catalogData], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    element.href = url;
-    element.download = fileName;
-    document.body.appendChild(element);
-    element.click();
-    document.body.removeChild(element);
-    URL.revokeObjectURL(url);
   };
 
   return (
@@ -317,11 +130,15 @@ Web: https://globalindustrialtechnologies.com
               onClick={handleDownloadPdf}
               className="button btn-download-pdf"
               title="Download full technical catalog document"
+              disabled={isDownloadingPdf}
             >
               <Download size={14} />
-              <span>Download PDF</span>
+              <span>{isDownloadingPdf ? (pdfStatus || 'Generating PDF...') : 'Download PDF'}</span>
             </button>
-            <Link to="/contact" className="button glass">
+            <Link
+              to={`/contact?subject=${encodeURIComponent('Technical Catalog Quote Request')}&message=${encodeURIComponent('I would like to request an engineering quotation and technical review based on the 2026 Machinery Catalogue & Dossier (Ref: GIT-SPEC-2026-REV3).')}`}
+              className="button glass"
+            >
               <span>Request Quote</span>
               <ArrowUpRight size={14} />
             </Link>
@@ -984,11 +801,18 @@ Web: https://globalindustrialtechnologies.com
               <span>TECHNICAL SPECIFICATION ARCHIVE • GIT-SPEC-2026-REV3</span>
             </div>
             <div className="pdf-bottom-actions">
-              <button onClick={handleDownloadPdf} className="button btn-download-pdf">
+              <button
+                onClick={handleDownloadPdf}
+                className="button btn-download-pdf"
+                disabled={isDownloadingPdf}
+              >
                 <Download size={14} />
-                <span>Download Full Technical PDF</span>
+                <span>{isDownloadingPdf ? (pdfStatus || 'Generating PDF...') : 'Download Full Technical PDF'}</span>
               </button>
-              <Link to="/contact" className="button glass">
+              <Link
+                to={`/contact?subject=${encodeURIComponent('Technical Dossier Inquiry')}&message=${encodeURIComponent('I have reviewed the 2026 Technical Machinery Catalogue & Dossier and would like to discuss engineering specifications and requirements for our plant.')}`}
+                className="button glass"
+              >
                 <span>Enquire About These Specs</span>
                 <ArrowRight size={14} />
               </Link>
@@ -1026,7 +850,7 @@ Web: https://globalindustrialtechnologies.com
                   ))}
                 </ul>
                 <Link
-                  to="/contact"
+                  to={`/contact?product=${encodeURIComponent(item.name)}&industry=${encodeURIComponent(item.type)}&message=${encodeURIComponent(`Requesting a tailored quotation, format parts compatibility, and production timeline for: ${item.name} (${item.type}).`)}`}
                   className="button sm white full"
                   style={{ marginTop: 'auto', justifyContent: 'center' }}
                 >
@@ -1048,11 +872,18 @@ Web: https://globalindustrialtechnologies.com
           your factory footprint.
         </p>
         <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <button onClick={handleDownloadPdf} className="button primary">
+          <button
+            onClick={handleDownloadPdf}
+            className="button primary"
+            disabled={isDownloadingPdf}
+          >
             <Download size={15} />
-            <span>Download PDF Catalog</span>
+            <span>{isDownloadingPdf ? (pdfStatus || 'Generating PDF...') : 'Download PDF Catalog'}</span>
           </button>
-          <Link className="button glass-dark" to="/contact">
+          <Link
+            className="button glass-dark"
+            to={`/contact?subject=${encodeURIComponent('Custom Machine Configuration')}&message=${encodeURIComponent('We would like to discuss a custom industrial machinery configuration adapted to our factory footprint and line speed requirements.')}`}
+          >
             <span>Start the conversation</span>
             <ArrowUpRight size={16} />
           </Link>

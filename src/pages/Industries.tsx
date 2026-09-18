@@ -52,7 +52,10 @@ export function Industries() {
                   </div>
                 )}
                 <div className="industry-split-actions">
-                  <Link to="/contact" className="button dark">
+                  <Link
+                    to={`/contact?industry=${encodeURIComponent(it.title)}&message=${encodeURIComponent(`We are interested in discussing machinery and turnkey solutions for the ${it.title} industry (${it.copy}).`)}`}
+                    className="button dark"
+                  >
                     Discuss this application <ArrowRight size={15} />
                   </Link>
                 </div>
@@ -69,7 +72,10 @@ export function Industries() {
             Tell us your product, capacity, and facility constraints. We configure the machinery scope
             to match your exact output.
           </p>
-          <Link className="button light" to="/contact">
+          <Link
+            className="button light"
+            to={`/contact?subject=${encodeURIComponent('Industry Application Consultation')}&message=${encodeURIComponent('We would like to consult on an industrial production line for our facility.')}`}
+          >
             Start a project <ArrowRight size={16} />
           </Link>
         </div>

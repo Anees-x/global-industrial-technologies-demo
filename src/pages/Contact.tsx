@@ -1,9 +1,13 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
-import { ArrowUpRight, CheckCircle2, Mail } from 'lucide-react';
+import React, { ChangeEvent, FormEvent, useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { ArrowUpRight, CheckCircle2, Mail, Sparkles } from 'lucide-react';
 import { Words } from '../components/common/Words';
 
 export function Contact() {
+  const [searchParams] = useSearchParams();
   const [sent, setSent] = useState(false);
+  const [prefilledSource, setPrefilledSource] = useState<string | null>(null);
+
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -13,6 +17,105 @@ export function Contact() {
     project: '1. Understand Needs & Consultation',
     message: '',
   });
+
+  useEffect(() => {
+    const serviceParam = searchParams.get('service');
+    const productParam = searchParams.get('product') || searchParams.get('machine');
+    const projectParam = searchParams.get('project');
+    const industryParam = searchParams.get('industry');
+    const subjectParam = searchParams.get('subject');
+    const messageParam = searchParams.get('message');
+    const nameParam = searchParams.get('name');
+    const companyParam = searchParams.get('company');
+
+    let matchedProject = formData.project;
+    let matchedIndustry = formData.industry;
+    let sourceLabel = '';
+    let autoMessage = '';
+
+    // 1. Service / Step pre-filling
+    if (serviceParam) {
+      sourceLabel = `Service Step: ${serviceParam}`;
+      const lower = serviceParam.toLowerCase();
+      if (lower.includes('1') || lower.includes('consultation') || lower.includes('needs')) {
+        matchedProject = '1. Understand Needs & Consultation';
+      } else if (lower.includes('2') || lower.includes('sourcing') || lower.includes('selection')) {
+        matchedProject = '2. Machinery Selection & Sourcing';
+      } else if (lower.includes('3') || lower.includes('fat') || lower.includes('inspection')) {
+        matchedProject = '3. Pre-Shipment Inspection / FAT';
+      } else if (lower.includes('4') || lower.includes('shipping') || lower.includes('customs')) {
+        matchedProject = '4. Shipping & Customs Delivery';
+      } else if (lower.includes('5') || lower.includes('installation') || lower.includes('setup')) {
+        matchedProject = '5. Installation & Setup';
+      } else if (lower.includes('6') || lower.includes('commissioning') || lower.includes('testing')) {
+        matchedProject = '6. Testing & Commissioning';
+      } else if (lower.includes('7') || lower.includes('training')) {
+        matchedProject = '7. Staff Training';
+      } else if (lower.includes('8') || lower.includes('validation') || lower.includes('calibration')) {
+        matchedProject = '8. Calibration & Validation';
+      } else if (lower.includes('9') || lower.includes('spare') || lower.includes('support')) {
+        matchedProject = '9. Ongoing Support & Spare Parts';
+      } else if (lower.includes('10') || lower.includes('turnkey')) {
+        matchedProject = '10. Complete Turnkey Project';
+      } else {
+        matchedProject = serviceParam;
+      }
+      autoMessage = `I would like to discuss ${serviceParam} for our facility.`;
+    }
+
+    // 2. Product / Machinery pre-filling
+    if (productParam) {
+      sourceLabel = `Machinery: ${productParam}`;
+      matchedProject = '2. Machinery Selection & Sourcing';
+      autoMessage = `Requesting technical configuration, capacity specifications, and pricing for: ${productParam}.`;
+    }
+
+    // 3. Project pre-filling
+    if (projectParam && !serviceParam) {
+      sourceLabel = `Project: ${projectParam}`;
+      matchedProject = '10. Complete Turnkey Project';
+      autoMessage = `I would like to enquire about the project scope and specifications for: ${projectParam}.`;
+    }
+
+    // 4. Industry matching
+    if (industryParam) {
+      const indLower = industryParam.toLowerCase();
+      if (indLower.includes('food')) matchedIndustry = 'Food';
+      else if (indLower.includes('bev')) matchedIndustry = 'Beverages';
+      else if (indLower.includes('cosm')) matchedIndustry = 'Cosmetics';
+      else if (indLower.includes('pack')) matchedIndustry = 'Packaging';
+      else if (indLower.includes('clean') || indLower.includes('pharma')) matchedIndustry = 'Cleanroom / Pharma';
+      else matchedIndustry = 'Other';
+
+      if (!sourceLabel) {
+        sourceLabel = `Industry: ${industryParam}`;
+      }
+      if (!autoMessage) {
+        autoMessage = `We are looking for turnkey equipment and engineering solutions for the ${industryParam} sector.`;
+      }
+    }
+
+    // 5. Subject / Message override
+    if (subjectParam && !sourceLabel) {
+      sourceLabel = subjectParam;
+    }
+    if (messageParam) {
+      autoMessage = messageParam;
+    }
+
+    if (sourceLabel) {
+      setPrefilledSource(sourceLabel);
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      name: nameParam || prev.name,
+      company: companyParam || prev.company,
+      industry: matchedIndustry,
+      project: matchedProject,
+      message: autoMessage || prev.message,
+    }));
+  }, [searchParams]);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -66,6 +169,28 @@ ${formData.message}`;
           </div>
         </div>
         <form onSubmit={handleSubmit}>
+          {prefilledSource && (
+            <div
+              className="full"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '10px 14px',
+                background: 'rgba(255, 189, 53, 0.12)',
+                border: '1px solid rgba(255, 189, 53, 0.4)',
+                borderRadius: '6px',
+                fontSize: '11px',
+                color: '#2a2618',
+                marginBottom: '4px',
+              }}
+            >
+              <Sparkles size={14} style={{ color: '#b57a07', flexShrink: 0 }} />
+              <span>
+                Auto-populated from selection: <strong>{prefilledSource}</strong>
+              </span>
+            </div>
+          )}
           <label>
             Name
             <input

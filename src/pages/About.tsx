@@ -54,7 +54,10 @@ export function About() {
             contractors.
           </p>
           <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '24px' }}>
-            <Link className="button dark" to="/contact">
+            <Link
+              className="button dark"
+              to={`/contact?subject=${encodeURIComponent('Engineering Consultation')}&message=${encodeURIComponent('We would like to consult with Global Industrial Technologies on a full-lifecycle machinery and facility integration project.')}`}
+            >
               Discuss your requirement <ArrowRight size={16} />
             </Link>
             <Link className="button btn-catalog" to="/catalog">

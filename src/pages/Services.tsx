@@ -34,7 +34,10 @@ export function Services() {
                 <div className="eyebrow">STEP {s.id} / SERVICE CYCLE</div>
                 <h2>{s.title}</h2>
                 <p>{s.short}</p>
-                <Link to="/contact" className="button sm white">
+                <Link
+                  to={`/contact?service=${encodeURIComponent(`${s.id}. ${s.title}`)}&message=${encodeURIComponent(`I would like to discuss Step ${s.id}: ${s.title} (${s.short}) for our production facility.`)}`}
+                  className="button sm white"
+                >
                   <span>Discuss this step</span>
                   <ArrowUpRight size={14} />
                 </Link>

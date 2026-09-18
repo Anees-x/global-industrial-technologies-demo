@@ -182,7 +182,7 @@ export function Home() {
           </div>
           <div className="industry-strip">
             <span>Don't see your sector?</span>
-            <Link to="/contact">
+            <Link to={`/contact?subject=${encodeURIComponent('Custom Industry Application')}&message=${encodeURIComponent('We would like to discuss custom machinery and process requirements for our specialized industry application.')}`}>
               Discuss custom industry application <ArrowUpRight size={14} />
             </Link>
           </div>
@@ -210,11 +210,15 @@ export function Home() {
           <div className="process-steps">
             {services.map((s) => (
               <Reveal key={s.id}>
-                <div className="step">
+                <Link
+                  to={`/contact?service=${encodeURIComponent(`${s.id}. ${s.title}`)}&message=${encodeURIComponent(`I would like to discuss Step ${s.id}: ${s.title} for our facility.`)}`}
+                  className="step"
+                  style={{ textDecoration: 'none', color: 'inherit' }}
+                >
                   <span>{s.id}</span>
                   <strong>{s.title}</strong>
                   <ArrowRight />
-                </div>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -263,7 +267,10 @@ export function Home() {
             For projects requiring controlled environments, cleanroom scope can be coordinated
             alongside machinery and production requirements.
           </p>
-          <Link className="button dark" to="/services">
+          <Link
+            className="button dark"
+            to={`/contact?project=${encodeURIComponent('Cleanroom Solution')}&industry=Cleanroom+%2F+Pharma&message=${encodeURIComponent('We would like to consult on a turnkey modular cleanroom and HVAC cascade enclosure.')}`}
+          >
             Explore cleanroom solutions <ArrowRight size={16} />
           </Link>
         </div>
@@ -292,7 +299,10 @@ export function Home() {
               After installation, we continue to support you with maintenance, troubleshooting,
               repairs, spare parts, and technical assistance.
             </p>
-            <Link to="/contact" className="text-dark">
+            <Link
+              to={`/contact?service=${encodeURIComponent('9. Ongoing Support & Spare Parts')}&message=${encodeURIComponent('Requesting maintenance support, spare parts availability, or technical service for our operating equipment.')}`}
+              className="text-dark"
+            >
               Talk to our team <ArrowUpRight size={15} />
             </Link>
           </div>
@@ -308,7 +318,10 @@ export function Home() {
           <Link className="button light btn-catalog" to="/catalog">
             <FileText size={15} /> View E-Catalog
           </Link>
-          <Link className="button dark" to="/contact">
+          <Link
+            className="button dark"
+            to={`/contact?subject=${encodeURIComponent('New Project Consultation')}&message=${encodeURIComponent('We are preparing a new industrial production facility and would like to start project discussions.')}`}
+          >
             Start the conversation <ArrowUpRight size={16} />
           </Link>
         </div>
