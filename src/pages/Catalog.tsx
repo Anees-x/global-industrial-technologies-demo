@@ -97,21 +97,42 @@ export function Catalog() {
 
   return (
     <>
-      <PageHero
-        label="E-CATALOG // 2026 SPECIFICATION"
-        title={
-          <>
-            TECHNICAL MACHINERY
-            <br />
-            <em>CATALOGUE & DOSSIER.</em>
-          </>
-        }
-        copy="Comprehensive technical specifications, multi-axis line schematics, cleanroom HVAC cascade blueprints, and turnkey service parameters formatted to international engineering standards."
-        img={IMG.hero}
-      />
+      {/* Top Streamlined Header — Catalog Front & Center */}
+      <section className="catalog-top-header">
+        <div className="section" style={{ paddingBottom: 0 }}>
+          <div className="catalog-top-flex">
+            <div className="catalog-top-title-group">
+              <div className="eyebrow">E-CATALOG // 2026 SPECIFICATION</div>
+              <h1>TECHNICAL MACHINERY CATALOGUE</h1>
+              <p>
+                Browse complete continuous specifications, machine dimensions, cleanroom designs, and pre-shipment testing standards.
+              </p>
+            </div>
+
+            <div className="catalog-meta-actions" style={{ flexShrink: 0 }}>
+              <button
+                onClick={handleDownloadPdf}
+                className="button btn-download-pdf"
+                title="Download full technical catalog document"
+                disabled={isDownloadingPdf}
+              >
+                <Download size={14} />
+                <span>{isDownloadingPdf ? (pdfStatus || 'Generating PDF...') : 'Download PDF'}</span>
+              </button>
+              <Link
+                to={`/contact?subject=${encodeURIComponent('Technical Catalog Quote Request')}&message=${encodeURIComponent('I would like to request an engineering quotation and technical review based on the 2026 Machinery Catalogue (Ref: GIT-SPEC-2026-REV3).')}`}
+                className="button dark"
+              >
+                <span>Request Quote</span>
+                <ArrowUpRight size={14} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Quick Telemetry Strip */}
-      <section className="catalog-meta-strip section-rule">
+      <section className="catalog-meta-strip section-rule" style={{ background: '#f6f7f4' }}>
         <div className="catalog-meta-inner">
           <div className="catalog-meta-item">
             <span className="catalog-meta-label">DOCUMENT REF</span>
@@ -125,40 +146,11 @@ export function Catalog() {
             <span className="catalog-meta-label">VALIDATION</span>
             <strong className="catalog-meta-val">cGMP / CE / ISO Class 5–8</strong>
           </div>
-          <div className="catalog-meta-actions">
-            <button
-              onClick={handleDownloadPdf}
-              className="button btn-download-pdf"
-              title="Download full technical catalog document"
-              disabled={isDownloadingPdf}
-            >
-              <Download size={14} />
-              <span>{isDownloadingPdf ? (pdfStatus || 'Generating PDF...') : 'Download PDF'}</span>
-            </button>
-            <Link
-              to={`/contact?subject=${encodeURIComponent('Technical Catalog Quote Request')}&message=${encodeURIComponent('I would like to request an engineering quotation and technical review based on the 2026 Machinery Catalogue & Dossier (Ref: GIT-SPEC-2026-REV3).')}`}
-              className="button glass"
-            >
-              <span>Request Quote</span>
-              <ArrowUpRight size={14} />
-            </Link>
-          </div>
         </div>
       </section>
 
-      {/* Main E-Catalog CAD Inspection Console */}
-      <section className="catalog-viewer-section section">
-        <div className="catalog-header-wrap">
-          <div>
-            <div className="eyebrow">DIGITAL TECHNICAL DOSSIER</div>
-            <Words>TECHNICAL MACHINERY SPECIFICATIONS</Words>
-          </div>
-          <p className="catalog-intro-copy">
-            Complete continuous technical portfolio formatted to Swiss/German engineering standards. Use
-            the interactive CAD toolbar below to scale sheets, navigate sections, or export the validated
-            document.
-          </p>
-        </div>
+      {/* Main E-Catalog Inspection Console */}
+      <section className="catalog-viewer-section section" style={{ paddingTop: '24px' }}>
 
         {/* CAD Preview Workstation Shell */}
         <div

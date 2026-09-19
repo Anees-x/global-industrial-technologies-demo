@@ -1,24 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
-  Activity,
   ArrowRight,
   ArrowUpRight,
   CheckCircle2,
-  ChevronRight,
   Cpu,
-  Download,
-  FileCheck,
-  FileSpreadsheet,
   FileText,
   Layers,
-  Radio,
-  RotateCw,
-  ScanLine,
   ShieldCheck,
-  Sliders,
-  Sparkles,
   Workflow
 } from 'lucide-react';
 import { Words } from '../components/common/Words';
@@ -26,67 +16,143 @@ import { Reveal } from '../components/common/Reveal';
 import { IMG } from '../data/assets';
 import { services } from '../data/services';
 import { industries } from '../data/industries';
-import { DossierBackgroundCanvas } from '../components/common/DossierBackgroundCanvas';
 
+/* ==========================================================================
+   CONVERSION-FOCUSED ENTERPRISE HERO (V2)
+   ========================================================================== */
 function Hero() {
   return (
-    <section className="hero hero-editorial">
-      <div className="hero-copy">
-        <div className="hero-kicker">
-          <span>GIT / 001</span>
-          <b>TURNKEY INDUSTRIAL SYSTEMS</b>
+    <section className="hero-v2">
+      <div className="hero-v2-glow" aria-hidden="true" />
+      <div className="section" style={{ width: '100%' }}>
+        <div className="hero-v2-grid">
+          {/* Left Column: Clear, High-Impact Value Proposition */}
+          <div className="hero-v2-copy">
+            <motion.div
+              className="hero-status-pill"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <span className="hero-status-dot" />
+              <span>GLOBAL INDUSTRIAL TECHNOLOGIES • TURNKEY SYSTEMS</span>
+            </motion.div>
+
+            <motion.h1
+              className="hero-v2-title"
+              initial={{ opacity: 0, y: 26 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.12, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            >
+              HIGH-PERFORMANCE
+              <br />
+              INDUSTRIAL MACHINERY.
+              <span className="accent">DELIVERED TURNKEY.</span>
+            </motion.h1>
+
+            <motion.p
+              className="hero-v2-lede"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.24, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            >
+              We help manufacturers source, install, and run complete packaging, filling, and processing
+              lines with zero hassle — from machine selection to factory testing and full operator training.
+            </motion.p>
+
+            <motion.div
+              className="hero-v2-actions"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.36, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <Link
+                className="button hero-btn-primary"
+                to={`/contact?subject=${encodeURIComponent('Custom Machinery Quote')}&message=${encodeURIComponent('We would like to request a quotation and technical review for a new machinery production line.')}`}
+              >
+                <span>Request a Custom Quote</span>
+                <ArrowRight size={16} />
+              </Link>
+              <Link className="button hero-btn-catalog" to="/catalog">
+                <FileText size={15} />
+                <span>View E-Catalog &amp; PDF</span>
+              </Link>
+            </motion.div>
+
+            {/* Trust & Quality Verification Bar */}
+            <motion.div
+              className="hero-trust-bar"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+            >
+              <div className="hero-trust-item">
+                <CheckCircle2 size={14} />
+                <span>100% Tested Before Delivery</span>
+              </div>
+              <div className="hero-trust-item">
+                <Workflow size={14} />
+                <span>10-Step Full Support</span>
+              </div>
+              <div className="hero-trust-item">
+                <ShieldCheck size={14} />
+                <span>cGMP &amp; ISO Compliant</span>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Right Column: Visual Showcase with Live Telemetry Cards */}
+          <motion.div
+            className="hero-v2-stage"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <div className="hero-stage-card">
+              <img
+                src={IMG.hero}
+                alt="Automated industrial filling and packaging production line"
+                className="hero-stage-img"
+              />
+              <div className="hero-stage-overlay" />
+
+              <div className="hero-stage-badge">
+                <span className="live-dot" />
+                <span>LIVE PRODUCTION LINE SYSTEM</span>
+              </div>
+
+              {/* Floating Telemetry Badge 1: Top Right */}
+              <motion.div
+                className="hero-float-card pos-tr"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.55, duration: 0.6 }}
+              >
+                <div className="hero-float-head">
+                  <CheckCircle2 size={12} />
+                  <span>PRE-SHIPMENT QUALITY</span>
+                </div>
+                <div className="hero-float-val">100% FACTORY TESTED</div>
+                <div className="hero-float-sub">Tested with your real bottles &amp; products</div>
+              </motion.div>
+
+              {/* Floating Telemetry Badge 2: Bottom Left */}
+              <motion.div
+                className="hero-float-card pos-bl"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.65, duration: 0.6 }}
+              >
+                <div className="hero-float-head">
+                  <Layers size={12} />
+                  <span>COMPLETE TURNKEY SCOPE</span>
+                </div>
+                <div className="hero-float-val">FILLING • CAPPING • PACKING</div>
+                <div className="hero-float-sub">Single partner from start to finish</div>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
-        <motion.h1
-          initial={{ opacity: 0, y: 38 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15, duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        >
-          WE BUILD THE
-          <br />
-          <em>SYSTEM AROUND</em>
-          <br />
-          THE MACHINE.
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.32, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
-          Machinery indenting, procurement, installation, commissioning, cleanroom solutions and
-          technical support for food, beverage, cosmetics and packaging production.
-        </motion.p>
-        <motion.div
-          className="hero-actions"
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <Link className="button dark hero-primary" to="/services">
-            Explore capabilities <ArrowRight size={16} />
-          </Link>
-          <Link className="button btn-catalog hero-catalog-btn" to="/catalog">
-            <FileText size={15} /> View Catalog
-          </Link>
-        </motion.div>
-        <div className="hero-micro">
-          <span>01 / CONSULT</span>
-          <span>02 / SOURCE</span>
-          <span>03 / INSTALL</span>
-          <span>04 / COMMISSION</span>
-        </div>
-      </div>
-      <div className="hero-visual">
-        <img src={IMG.hero} alt="Automated industrial filling and packaging production line" />
-        <div className="hero-visual-shade" />
-        <div className="hero-visual-top">
-          <span>LIVE SYSTEM VIEW</span>
-          <span>FOOD / BEVERAGE / PACKAGING</span>
-        </div>
-        <div className="hero-visual-caption">
-          <b>PRECISION IN MOTION.</b>
-          <span>Production-line machinery / integration / handover</span>
-        </div>
-        <div className="hero-visual-index">01</div>
       </div>
     </section>
   );
@@ -145,8 +211,8 @@ export function Home() {
         </div>
       </section>
 
-      {/* 03 / OUR CORE PHILOSOPHY */}
-      <CompanyPhilosophyShowcase />
+      {/* 03 / WHY CHOOSE US */}
+      <WhyChooseUs />
 
       {/* 04 / INDUSTRIES */}
       <section className="industries-dark dark-section">
@@ -188,7 +254,7 @@ export function Home() {
       </section>
 
       {/* 05 / MACHINERY & DIGITAL CATALOG */}
-      <InteractiveSpecificationDossier />
+      <MachineryCatalogShowcase />
 
       {/* 06 / FINAL CTA */}
       <section className="final-cta">
@@ -212,95 +278,64 @@ export function Home() {
 }
 
 /* ==========================================================================
-   ICONIC COMPANY PHILOSOPHY MONOLITH (SECTION 02.5)
+   SECTION 03: WHY CHOOSE US (CLEAN ENTERPRISE ARCHITECTURE)
    ========================================================================== */
-function CompanyPhilosophyShowcase() {
+function WhyChooseUs() {
+  const pillars = [
+    {
+      num: '01',
+      icon: <Layers size={22} />,
+      title: 'Single Responsible Partner',
+      copy: 'You never have to manage 10 different equipment vendors. We take full responsibility from first blueprint to final handover.'
+    },
+    {
+      num: '02',
+      icon: <CheckCircle2 size={22} />,
+      title: '100% Tested Before Shipment',
+      copy: 'Every machine is tested with your real containers and products before delivery, so there are no surprises on your factory floor.'
+    },
+    {
+      num: '03',
+      icon: <Cpu size={22} />,
+      title: 'Global Standard Components',
+      copy: 'Built with trusted, globally standard parts (Siemens, Festo, Schneider Electric) that your technicians can easily maintain.'
+    },
+    {
+      num: '04',
+      icon: <ShieldCheck size={22} />,
+      title: 'Full Training & Long-Term Support',
+      copy: 'We provide on-site operator training, step-by-step user manuals, and lifetime technical support so your line runs smoothly for years.'
+    }
+  ];
+
   return (
-    <section className="home-philosophy-section">
+    <section className="why-choose-section">
       <div className="section">
-        <div className="eyebrow light">03 / OUR CORE PHILOSOPHY</div>
-        <div className="home-phil-monolith frame">
-          {/* Ambient Lighting & CAD Grid Effects */}
-          <div className="phil-glow-mesh" aria-hidden="true" />
-          <div className="phil-cad-grid" aria-hidden="true" />
-          <div className="phil-laser-beam" aria-hidden="true" />
+        <div className="eyebrow light">03 / WHY CHOOSE US</div>
+        <Words>BUILT FOR MAXIMUM RELIABILITY AND COMPLETE PEACE OF MIND.</Words>
 
-          {/* Corner Precision Crosshairs */}
-          <div className="phil-crosshair tl" aria-hidden="true" />
-          <div className="phil-crosshair tr" aria-hidden="true" />
-          <div className="phil-crosshair bl" aria-hidden="true" />
-          <div className="phil-crosshair br" aria-hidden="true" />
-
-          {/* Top Precision HUD Meta */}
-          <div className="phil-meta-header">
-            <div className="phil-status-pill">
-              <span className="phil-status-ping" />
-              <span className="phil-status-dot" />
-              <span>GIT // OUR CORE PHILOSOPHY</span>
-            </div>
-            <div className="phil-datum-stamps">
-              <span>ONE COMPLETE SYSTEM</span>
-              <span className="sep">•</span>
-              <span>100% FACTORY TESTED</span>
-              <span className="sep">•</span>
-              <span className="phil-gold-stamp">LIFECYCLE SUPPORT</span>
-            </div>
-          </div>
-
-          {/* Powerful Quote & Editorial Body */}
-          <div className="phil-monolith-content">
-            <div className="phil-kicker-tag">HOW WE WORK</div>
-
-            <h2 className="phil-monolith-quote">
-              “WE DO NOT BELIEVE IN
-              <br />
-              <span className="quote-gold">ISOLATED MACHINES.</span>”
-            </h2>
-
-            <p className="phil-monolith-subquote">
-              A single machine cannot succeed on its own. We design complete, connected production lines —
-              bringing filling, capping, packaging, and cleanrooms together with one dedicated team responsible from start to finish.
-            </p>
-
-            {/* 3 Hallmark Architectural Pillars */}
-            <div className="phil-hallmarks-row">
-              <div className="phil-hallmark-card">
-                <div className="hallmark-idx">01</div>
-                <div className="hallmark-body">
-                  <strong>One Responsible Partner</strong>
-                  <span>We manage your entire project from start to finish so you never deal with multiple competing vendors.</span>
-                </div>
+        <div className="why-choose-grid">
+          {pillars.map((p, idx) => (
+            <Reveal delay={idx * 0.06} key={p.num}>
+              <div className="why-card frame">
+                <div className="why-card-icon">{p.icon}</div>
+                <div className="why-card-num">{p.num} / ADVANTAGE</div>
+                <h3>{p.title}</h3>
+                <p>{p.copy}</p>
               </div>
+            </Reveal>
+          ))}
+        </div>
 
-              <div className="phil-hallmark-card">
-                <div className="hallmark-idx">02</div>
-                <div className="hallmark-body">
-                  <strong>100% Tested Before Delivery</strong>
-                  <span>Every machine is thoroughly tested with your actual products and bottles before shipping to your site.</span>
-                </div>
-              </div>
-
-              <div className="phil-hallmark-card">
-                <div className="hallmark-idx">03</div>
-                <div className="hallmark-body">
-                  <strong>Built for Long-Term Reliability</strong>
-                  <span>High-grade stainless steel construction with globally standard parts that are easy to operate and maintain.</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Actions */}
-            <div className="phil-monolith-actions">
-              <Link className="button btn-catalog" to="/services">
-                <span>Explore 10-Step Service Cycle</span>
-                <ArrowRight size={15} />
-              </Link>
-              <Link className="button dark" to="/about">
-                <span>About Our Approach</span>
-                <ArrowUpRight size={15} />
-              </Link>
-            </div>
-          </div>
+        <div className="why-choose-actions">
+          <Link className="button btn-catalog" to="/services">
+            <span>Explore 10-Step Service Cycle</span>
+            <ArrowRight size={15} />
+          </Link>
+          <Link className="button dark" to="/about">
+            <span>About Our Approach</span>
+            <ArrowUpRight size={15} />
+          </Link>
         </div>
       </div>
     </section>
@@ -308,167 +343,106 @@ function CompanyPhilosophyShowcase() {
 }
 
 /* ==========================================================================
-   INTERACTIVE TECHNICAL CATALOGUE GATEWAY (SECTION 05.5)
+   SECTION 05: MACHINERY & DIGITAL CATALOG SHOWCASE (NO DROPDOWNS)
    ========================================================================== */
-function InteractiveSpecificationDossier() {
-  const [activePill, setActivePill] = useState<number | null>(0);
-  const [isMobile, setIsMobile] = useState(false);
-
-  React.useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  const scopeHighlights = [
+function MachineryCatalogShowcase() {
+  const catalogLines = [
     {
-      num: '01',
-      title: 'Filling & Packaging Machines',
-      subtitle: 'Accurate filling and capping systems for liquids, oils, creams, and powders with easy automated cleaning.',
-      meta: '5 ml to 5 Liters • Up to 6,000 Bottles/Hour • Stainless Steel • Touchscreen Controls'
+      id: '01',
+      tag: 'FILLING & DOSING',
+      title: 'Liquid & Cream Filling Systems',
+      copy: 'Accurate filling and capping systems for liquids, oils, creams, and powders with easy automated cleaning.',
+      specs: ['5 ml to 5 Liters range', 'Up to 6,000 Bottles/Hour', 'AISI 316L Stainless Steel'],
+      img: IMG.productFilling
     },
     {
-      num: '02',
-      title: 'Labeling & Box Packaging',
-      subtitle: 'Automatic bottle labeling, camera inspection for barcodes, box packing, and smooth conveyor movement.',
-      meta: 'High-Precision Labeling • Up to 12,000 Bottles/Hour • Automatic Defect Check • Conveyor Sync'
+      id: '02',
+      tag: 'CAPPING & SEALING',
+      title: 'Rotary Capping & Sealing Machines',
+      copy: 'Continuous high-speed capping with servo torque control for screw caps, snap caps, and ROPP closures.',
+      specs: ['6 to 18 Capping Heads', 'Servo Torque Control', 'Zero Bottle Damage'],
+      img: IMG.productCapping
     },
     {
-      num: '03',
-      title: 'Cleanrooms & Controlled Rooms',
-      subtitle: 'Pre-built modular cleanrooms with high-efficiency air filters, temperature control, and dust-free environments.',
-      meta: 'ISO Certified Standards • Air-Lock Doors • Full Temperature & Humidity Control'
+      id: '03',
+      tag: 'LABELING & PACKAGING',
+      title: 'Automatic Labeling & Box Packing',
+      copy: 'Automatic bottle labeling, camera inspection for barcodes, box packing, and smooth conveyor movement.',
+      specs: ['Wrap-Around & Front/Back', 'Automatic Defect Check', 'Up to 12,000 Bottles/Hour'],
+      img: IMG.productLabelling
     },
     {
-      num: '04',
-      title: '100% Factory Testing Before Delivery',
-      subtitle: 'Every machine is fully tested with your actual containers and products before delivery to guarantee zero surprises.',
-      meta: 'Tested with Real Products • Full Quality Inspection • Complete Test Reports Included'
+      id: '04',
+      tag: 'CONTROLLED ENVIRONMENTS',
+      title: 'Modular Cleanrooms & HVAC Systems',
+      copy: 'Pre-built modular cleanrooms with high-efficiency air filters, temperature control, and dust-free environments.',
+      specs: ['ISO Class 5 to 8 Standards', 'HEPA H14 Air Filtration', 'Positive Pressure Cascades'],
+      img: IMG.cleanroom
     }
   ];
 
-  const handlePillClick = (idx: number) => {
-    if (isMobile) {
-      setActivePill(activePill === idx ? null : idx);
-    }
-  };
-
   return (
-    <section className="interactive-dossier-section">
-      <div className="section">
-        <div className="eyebrow light">05 / MACHINERY &amp; DIGITAL CATALOG</div>
-        <div className="interactive-dossier-card frame">
-          {/* Interactive High-Tech CAD Telemetry Canvas */}
-          <DossierBackgroundCanvas />
+    <section className="machinery-catalog-showcase section">
+      <div>
+        <div className="eyebrow">05 / MACHINERY &amp; DIGITAL CATALOG</div>
+        <Words>EXPLORE OUR COMPLETE PRODUCTION EQUIPMENT RANGE.</Words>
+      </div>
 
-          {/* Corner Precision Crosshairs */}
-          <div className="dossier-crosshair tl" aria-hidden="true" />
-          <div className="dossier-crosshair tr" aria-hidden="true" />
-          <div className="dossier-crosshair bl" aria-hidden="true" />
-          <div className="dossier-crosshair br" aria-hidden="true" />
+      <div className="machinery-catalog-grid">
+        {catalogLines.map((item, idx) => (
+          <Reveal delay={idx * 0.05} key={item.id}>
+            <article className="machinery-item-card frame">
+              <img src={item.img} alt={item.title} className="machinery-item-img" loading="lazy" />
+              <div className="machinery-item-body">
+                <span className="machinery-item-tag">{item.id} / {item.tag}</span>
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
 
-          {/* Top Console Bar */}
-          <div className="dossier-console-head">
-            <div className="dossier-kicker">
-              <span className="dossier-kicker-dot" />
-              <span>PRODUCT CATALOG // 2026 OVERVIEW</span>
-            </div>
-            <div className="dossier-top-badge">
-              <ShieldCheck size={13} />
-              <span>cGMP & ISO QUALITY CERTIFIED</span>
-            </div>
-          </div>
-
-          {/* Main Layout (Clean, Expansive, Full-Width Architecture) */}
-          <div className="dossier-expanded-layout">
-            <div className="dossier-header-block">
-              <h2 className="dossier-spec-heading">
-                EXPLORE OUR COMPLETE <br />
-                <span className="heading-highlight">MACHINERY & SYSTEM CATALOG.</span>
-              </h2>
-
-              <p className="dossier-spec-summary">
-                Browse complete technical details, machine dimensions, cleanroom setups, and testing guidelines in our easy-to-read digital catalog.
-              </p>
-            </div>
-
-            {/* Engineering Scope Highlights (Desktop Always Expanded / Mobile Smooth Accordion) */}
-            <div className="gateway-scope-pills" role="tablist" aria-label="Catalog Sections">
-              {scopeHighlights.map((item, idx) => {
-                const isOpen = !isMobile || activePill === idx;
-                return (
-                  <div
-                    key={idx}
-                    className={`gateway-scope-pill ${isOpen ? 'active' : ''} ${!isMobile ? 'desktop-expanded' : 'mobile-interactive'}`}
-                    onClick={() => handlePillClick(idx)}
-                    role={isMobile ? 'tab' : 'region'}
-                    aria-selected={isOpen}
-                    tabIndex={isMobile ? 0 : undefined}
-                  >
-                    <div className="pill-head">
-                      <span className="pill-num">{item.num}</span>
-                      <strong className="pill-title">{item.title}</strong>
-                      {isMobile && (
-                        <ChevronRight
-                          size={14}
-                          className="pill-arrow"
-                          style={{
-                            transform: activePill === idx ? 'rotate(90deg)' : 'rotate(0deg)',
-                            transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
-                          }}
-                        />
-                      )}
+                <div className="machinery-item-specs">
+                  {item.specs.map((spec) => (
+                    <div key={spec} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <CheckCircle2 size={11} color="#ffbd35" />
+                      <span>{spec}</span>
                     </div>
+                  ))}
+                </div>
 
-                    {!isMobile ? (
-                      /* Desktop: Always fully rendered with crisp formatting */
-                      <div className="pill-details permanent">
-                        <p>{item.subtitle}</p>
-                        <span className="pill-meta-tag">{item.meta}</span>
-                      </div>
-                    ) : (
-                      /* Mobile: Silky Smooth Spring-Animated Accordion */
-                      <AnimatePresence initial={false}>
-                        {isOpen && (
-                          <motion.div
-                            className="pill-details"
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                          >
-                            <p>{item.subtitle}</p>
-                            <span className="pill-meta-tag">{item.meta}</span>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
+                <Link
+                  to={`/contact?product=${encodeURIComponent(item.title)}&message=${encodeURIComponent(`I would like to request technical specifications and a quotation for: ${item.title}.`)}`}
+                  className="button sm white"
+                  style={{ width: '100%', marginTop: 'auto' }}
+                >
+                  <span>Request Quote</span>
+                  <ArrowUpRight size={14} />
+                </Link>
+              </div>
+            </article>
+          </Reveal>
+        ))}
+      </div>
 
-            {/* Actions Row */}
-            <div className="dossier-action-row">
-              <Link className="button btn-catalog" to="/catalog">
-                <FileText size={15} />
-                <span>Open E-Catalog & PDF</span>
-                <ArrowRight size={15} />
-              </Link>
-              <Link className="button glass" to="/catalog">
-                <span>Preview 5 Technical Sheets</span>
-                <ArrowUpRight size={15} />
-              </Link>
-              <Link className="button dark" to="/products">
-                <span>Browse All Machines</span>
-              </Link>
-            </div>
+      {/* Catalog Action Banner */}
+      <Reveal delay={0.2}>
+        <div className="machinery-catalog-banner frame">
+          <div>
+            <h3>Looking for complete technical drawings and equipment dimensions?</h3>
+            <p>Access our complete continuous engineering catalog with detailed blueprints, capacities, and testing standards.</p>
+          </div>
+          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <Link className="button btn-catalog" to="/catalog">
+              <FileText size={15} />
+              <span>Open Full E-Catalog</span>
+            </Link>
+            <Link
+              className="button dark"
+              to={`/contact?subject=${encodeURIComponent('Machinery Catalog Consultation')}&message=${encodeURIComponent('We would like to discuss our equipment requirements based on the machinery catalog.')}`}
+            >
+              <span>Speak with an Engineer</span>
+              <ArrowRight size={15} />
+            </Link>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
