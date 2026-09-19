@@ -18,15 +18,15 @@ export function Projects() {
             <em>TO PRODUCTION.</em>
           </>
         }
-        copy="A visual project archive structure ready for your real installations, case studies and client outcomes."
+        copy="Explore our turnkey project deliveries — from high-speed filling lines and automated packaging to modular cleanroom installations."
         img={IMG.cleanroom}
       />
       <section className="project-archive section section-rule">
-        {projects.map(([n, t, tag, img]) => (
+        {projects.map(([n, t, tag, img, desc]) => (
           <Reveal key={n}>
             <article className="project-item frame">
               <div className="project-img">
-                <img src={img} alt={t} />
+                <img src={img} alt={t} loading="lazy" />
               </div>
               <div className="project-info">
                 <span>
@@ -34,14 +34,13 @@ export function Projects() {
                 </span>
                 <h2>{t}</h2>
                 <p>
-                  Project content can be replaced with the actual scope, machinery supplied,
-                  installation and operational outcome.
+                  {desc || 'Complete turnkey production line engineered and validated to strict cGMP, CE, and ISO standards.'}
                 </p>
                 <Link
                   to={`/contact?project=${encodeURIComponent(t)}&industry=${encodeURIComponent(tag)}&message=${encodeURIComponent(`I would like to request technical details, scope of work, and case study parameters for: ${t} (${tag}).`)}`}
-                  className="button sm white"
+                  className="button sm dark"
                 >
-                  <span>Request project details</span>
+                  <span>Request Project Details</span>
                   <ArrowUpRight size={14} />
                 </Link>
               </div>

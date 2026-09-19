@@ -6,13 +6,13 @@ interface GitLogoMarkProps {
 }
 
 export function GitLogoMark({ className = '', dark = false }: GitLogoMarkProps) {
-  const platGradId = dark ? 'gitDarkPlat' : 'gitLightPlat';
-  const goldGradId = dark ? 'gitDarkGold' : 'gitLightGold';
+  const platGrad = dark ? 'gitDarkSteel' : 'gitLightSteel';
+  const goldGrad = dark ? 'gitDarkAmber' : 'gitLightAmber';
 
   return (
     <svg
-      viewBox="0 0 76 28"
-      width="76"
+      viewBox="0 0 84 28"
+      width="84"
       height="28"
       className={`git-logo-svg ${className}`}
       fill="none"
@@ -20,103 +20,108 @@ export function GitLogoMark({ className = '', dark = false }: GitLogoMarkProps) 
       aria-hidden="true"
     >
       <defs>
-        {/* Precision Steel / Platinum Gradient */}
-        <linearGradient id="gitLightPlat" x1="0" y1="0" x2="0" y2="28" gradientUnits="userSpaceOnUse">
+        {/* Luxury Platinum / Titanium Gradient */}
+        <linearGradient id="gitLightSteel" x1="0" y1="0" x2="84" y2="28" gradientUnits="userSpaceOnUse">
           <stop offset="0%" stopColor="#FFFFFF" />
-          <stop offset="60%" stopColor="#EFF2EB" />
-          <stop offset="100%" stopColor="#D5D9CE" />
+          <stop offset="50%" stopColor="#EFF2EB" />
+          <stop offset="100%" stopColor="#CBD0C4" />
         </linearGradient>
 
-        <linearGradient id="gitDarkPlat" x1="0" y1="0" x2="0" y2="28" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#1A1C19" />
-          <stop offset="100%" stopColor="#0B0C0A" />
+        <linearGradient id="gitDarkSteel" x1="0" y1="0" x2="84" y2="28" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#222520" />
+          <stop offset="100%" stopColor="#0E100D" />
         </linearGradient>
 
-        {/* Engineering Gold Gradient */}
-        <linearGradient id="gitLightGold" x1="0" y1="0" x2="0" y2="28" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#FFE89E" />
-          <stop offset="45%" stopColor="#FFBD35" />
-          <stop offset="100%" stopColor="#D99411" />
+        {/* Precision Engineering Gold Gradient */}
+        <linearGradient id="gitLightAmber" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#FFF0B8" />
+          <stop offset="40%" stopColor="#FFBD35" />
+          <stop offset="100%" stopColor="#D48E08" />
         </linearGradient>
 
-        <linearGradient id="gitDarkGold" x1="0" y1="0" x2="0" y2="28" gradientUnits="userSpaceOnUse">
+        <linearGradient id="gitDarkAmber" x1="0" y1="0" x2="28" y2="28" gradientUnits="userSpaceOnUse">
           <stop offset="0%" stopColor="#E5A625" />
-          <stop offset="100%" stopColor="#A66F0B" />
+          <stop offset="100%" stopColor="#966304" />
         </linearGradient>
 
-        {/* Isometric Emblem Gradients */}
-        <linearGradient id="isoTop" x1="0" y1="0" x2="16" y2="10" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor={dark ? '#333630' : '#FFFFFF'} />
-          <stop offset="100%" stopColor={dark ? '#222520' : '#DDE1D6'} />
+        {/* Facet Sheen for Hexagonal Emblem */}
+        <linearGradient id="hexFacetTop" x1="0" y1="0" x2="24" y2="12" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor={dark ? '#3A3E36' : '#FFFFFF'} />
+          <stop offset="100%" stopColor={dark ? '#222520' : '#E2E6DC'} />
         </linearGradient>
-
-        <linearGradient id="isoRight" x1="8" y1="8" x2="20" y2="24" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#FFC857" />
-          <stop offset="100%" stopColor="#D99411" />
-        </linearGradient>
-
-        <linearGradient id="isoLeft" x1="0" y1="8" x2="10" y2="24" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor={dark ? '#1F221D' : '#32362E'} />
-          <stop offset="100%" stopColor={dark ? '#0F110E' : '#181A16'} />
+        <linearGradient id="hexFacetLeft" x1="0" y1="12" x2="12" y2="28" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor={dark ? '#222620' : '#3B4037'} />
+          <stop offset="100%" stopColor={dark ? '#111310' : '#1D201A'} />
         </linearGradient>
       </defs>
 
-      {/* ── Precision Isometric Prism Emblem (Left) ── */}
-      <g className="git-emblem-group">
-        {/* Top Facet */}
+      {/* ── Luxury Precision Hexagonal Vault Emblem ── */}
+      <g className="git-emblem-group" transform="translate(1, 1)">
+        {/* Outer Hexagon Shield Ring */}
         <path
-          d="M 10 2 L 19 6.8 L 10 11.6 L 1 6.8 Z"
-          fill="url(#isoTop)"
+          d="M 12 1 L 22.5 7 V 19 L 12 25 L 1.5 19 V 7 Z"
+          stroke={dark ? 'rgba(0,0,0,0.4)' : 'rgba(255,255,255,0.4)'}
+          strokeWidth="1"
+          fill="none"
         />
-        {/* Left Facet */}
+
+        {/* Top Facet (Platinum Mirror) */}
         <path
-          d="M 1 6.8 L 10 11.6 V 21.2 L 1 16.4 Z"
-          fill="url(#isoLeft)"
+          d="M 12 2.5 L 21 7.5 L 12 12.5 L 3 7.5 Z"
+          fill="url(#hexFacetTop)"
         />
-        {/* Right Facet (Gold Engineering Power Core) */}
+
+        {/* Left Facet (Industrial Obsidian Steel) */}
         <path
-          d="M 10 11.6 L 19 6.8 V 16.4 L 10 21.2 Z"
-          fill="url(#isoRight)"
+          d="M 3 7.5 L 12 12.5 V 23.5 L 3 18.5 Z"
+          fill="url(#hexFacetLeft)"
+        />
+
+        {/* Right Facet (Engineering Gold Power Core) */}
+        <path
+          d="M 12 12.5 L 21 7.5 V 18.5 L 12 23.5 Z"
+          fill={`url(#${goldGrad})`}
           className="git-logo-core"
         />
-        {/* Central Precision Vertex Highlight */}
-        <circle cx="10" cy="11.6" r="1" fill="#FFFFFF" opacity="0.9" />
+
+        {/* Core Intersection Vertex */}
+        <circle cx="12" cy="12.5" r="1.2" fill="#FFFFFF" opacity="0.95" />
       </g>
 
-      {/* ── Monogram G (Precision Chamfered Vector) ── */}
+      {/* ── Monogram G (Precision Aerospace Chamfer) ── */}
       <path
-        d="M 39 4 H 27 C 24.2 4 22 6.2 22 9 V 17 C 22 19.8 24.2 22 27 22 H 39 V 12.5 H 31.5 V 15.5 H 35.5 V 18.5 H 27 C 26.1 18.5 25.5 17.8 25.5 17 V 9 C 25.5 8.2 26.1 7.5 27 7.5 H 39 V 4 Z"
-        fill={`url(#${platGradId})`}
+        d="M 44 4 H 32 C 29.2 4 27 6.2 27 9 V 17 C 27 19.8 29.2 22 32 22 H 44 V 12.5 H 36.5 V 15.5 H 40.5 V 18.5 H 32 C 31.1 18.5 30.5 17.8 30.5 17 V 9 C 30.5 8.2 31.1 7.5 32 7.5 H 44 V 4 Z"
+        fill={`url(#${platGrad})`}
       />
-      <rect x="37.5" y="3" width="2" height="2" fill="#FFBD35" rx="0.5" />
+      <rect x="42.5" y="3" width="2" height="2" fill="#FFBD35" rx="0.5" />
 
       {/* ── Monogram I (Gold Monolith Pillar) ── */}
       <rect
-        x="45"
+        x="51"
         y="4"
         width="6.5"
         height="18"
-        rx="1"
-        fill={`url(#${goldGradId})`}
+        rx="1.2"
+        fill={`url(#${goldGrad})`}
         className="git-logo-core"
       />
       <line
-        x1="48.25"
+        x1="54.25"
         y1="6.5"
-        x2="48.25"
+        x2="54.25"
         y2="19.5"
         stroke="#FFFFFF"
-        strokeWidth="0.8"
-        strokeOpacity="0.75"
+        strokeWidth="0.9"
+        strokeOpacity="0.8"
         strokeLinecap="round"
       />
 
-      {/* ── Monogram T (Precision Architectural Crossbar) ── */}
+      {/* ── Monogram T (Architectural Precision Crossbar) ── */}
       <path
-        d="M 57 4 H 75 V 7.5 H 68 V 22 H 64 V 7.5 H 57 V 4 Z"
-        fill={`url(#${platGradId})`}
+        d="M 64 4 H 82 V 7.5 H 75 V 22 H 71 V 7.5 H 64 V 4 Z"
+        fill={`url(#${platGrad})`}
       />
-      <rect x="56.5" y="3" width="2" height="2" fill="#FFBD35" rx="0.5" />
+      <rect x="63.5" y="3" width="2" height="2" fill="#FFBD35" rx="0.5" />
     </svg>
   );
 }

@@ -136,7 +136,7 @@ export function Catalog() {
         <div className="catalog-meta-inner">
           <div className="catalog-meta-item">
             <span className="catalog-meta-label">DOCUMENT REF</span>
-            <strong className="catalog-meta-val">GIT-SPEC-2026-REV3</strong>
+            <strong className="catalog-meta-val">GLOBAL INDUSTRIAL TECHNOLOGIES // 2026-SPEC</strong>
           </div>
           <div className="catalog-meta-item">
             <span className="catalog-meta-label">TOTAL SYSTEMS</span>
@@ -303,7 +303,7 @@ export function Catalog() {
                       ||| | |||| || | ||| |||| | ||
                     </div>
                     <div className="pdf-meta-pills">
-                      <span>DOC ID: GIT-2026-ENG-V3.2</span>
+                      <span>DOC REF: GLOBAL INDUSTRIAL TECHNOLOGIES - 2026-SPEC</span>
                       <span className="pdf-meta-sep">•</span>
                       <span className="pdf-highlight-val">cGMP / CE-EN VALIDATED</span>
                     </div>

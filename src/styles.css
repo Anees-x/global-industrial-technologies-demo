@@ -6876,7 +6876,113 @@ body .nav.nav-hidden{
 }
 
 /* =========================================================
-   ENTERPRISE CONVERSION-FOCUSED HERO (V3 - INTERACTIVE STAGE)
+   CINEMATIC SITE ENTRANCE PRELOADER (LUXURY REVEAL SEQUENCE)
+   ========================================================= */
+.site-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #080a08;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.preloader-mesh {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle 500px at 50% 45%, rgba(255, 189, 53, 0.12), transparent 70%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: auto, 32px 32px, 32px 32px;
+}
+
+.preloader-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: min(380px, calc(100vw - 40px));
+}
+
+.preloader-logo-wrap {
+  margin-bottom: 24px;
+}
+
+.preloader-logo {
+  height: 44px;
+  width: auto;
+  filter: drop-shadow(0 0 24px rgba(255, 189, 53, 0.35));
+}
+
+.preloader-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 32px;
+}
+
+.preloader-brand-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #ffffff;
+}
+
+.preloader-brand-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #ffbd35;
+}
+
+.preloader-bar-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.preloader-bar-track {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.preloader-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #d48e08, #ffbd35, #ffffff);
+  box-shadow: 0 0 10px #ffbd35;
+  transition: width 0.06s linear;
+}
+
+.preloader-counter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #8c9085;
+}
+
+.preloader-counter-num {
+  color: #ffbd35;
+}
+
+/* =========================================================
+   21ST.DEV INSPIRED LUXURY HERO SECTION
    ========================================================= */
 .hero-v2 {
   position: relative;
@@ -6900,6 +7006,18 @@ body .nav.nav-hidden{
     linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: auto, auto, 40px 40px, 40px 40px;
+}
+
+.hero-ambient-spotlight {
+  position: absolute;
+  top: -20%;
+  left: 30%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 189, 53, 0.08) 0%, transparent 65%);
+  filter: blur(60px);
+  pointer-events: none;
 }
 
 .hero-v2-grid {

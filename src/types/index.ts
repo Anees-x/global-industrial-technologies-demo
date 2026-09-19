@@ -23,7 +23,7 @@ export interface ProductItem {
   specs: string[];
 }
 
-export type ProjectItem = [string, string, string, string];
+export type ProjectItem = [string, string, string, string, string?];
 
 export type LanguageCode = 'en' | 'pt' | 'fr';
 

@@ -9,7 +9,8 @@ import {
   FileText,
   Layers,
   ShieldCheck,
-  Workflow
+  Workflow,
+  Sparkles
 } from 'lucide-react';
 import { Words, ScrollTextHighlight } from '../components/common/Words';
 import { Reveal } from '../components/common/Reveal';
@@ -18,19 +19,19 @@ import { services } from '../data/services';
 import { industries } from '../data/industries';
 
 /* ==========================================================================
-   ENTERPRISE HERO (CLEAN, PRESTIGIOUS MULTI-MILLION DOLLAR ARCHITECTURE)
+   21ST.DEV INSPIRED LUXURY HERO (ENTERPRISE TURNKEY MACHINERY)
    ========================================================================== */
 const HERO_SYSTEMS = [
   {
     id: '01',
     label: 'Liquid Filling Lines',
     short: 'Liquid Filling',
-    sub: 'High-speed rotary & linear dosing for liquids, oils, and creams',
+    sub: 'Rotary & linear dosing up to 6,000 bph for liquids, oils, and creams',
     img: IMG.productFilling,
     status: 'SYSTEM // cGMP READY',
     badgeTopHead: 'PRE-SHIPMENT QUALITY',
     badgeTopVal: '100% FACTORY TESTED',
-    badgeTopSub: 'Tested with your real containers & product',
+    badgeTopSub: 'Validated with your real bottles & product',
     speedMetric: 'Up to 6,000 BPH',
     accuracyMetric: '±0.2% Precision',
     standardMetric: 'cGMP / AISI 316L'
@@ -39,7 +40,7 @@ const HERO_SYSTEMS = [
     id: '02',
     label: 'Rotary Capping',
     short: 'Rotary Capping',
-    sub: 'Continuous servo torque closure with zero container damage',
+    sub: 'Multi-head servo torque closure with zero container breakage',
     img: IMG.productCapping,
     status: 'SYSTEM // SERVO SYNC',
     badgeTopHead: 'TORQUE PRECISION',
@@ -53,12 +54,12 @@ const HERO_SYSTEMS = [
     id: '03',
     label: 'Labeling & Packaging',
     short: 'Vision & Packing',
-    sub: 'Automated camera inspection, carton packing, and conveyor synchronization',
+    sub: 'High-speed camera inspection, carton packing, and conveyor synchronization',
     img: IMG.productLabelling,
     status: 'SYSTEM // VISION VERIFIED',
     badgeTopHead: 'DEFECT DETECTION',
     badgeTopVal: '100% CAMERA INSPECTED',
-    badgeTopSub: 'Barcode, label position & seal check',
+    badgeTopSub: 'Barcode, label alignment & seal check',
     speedMetric: '12,000 BPH',
     accuracyMetric: '99.9% Yield',
     standardMetric: 'CE Compliant'
@@ -67,7 +68,7 @@ const HERO_SYSTEMS = [
     id: '04',
     label: 'Modular Cleanrooms',
     short: 'Modular Cleanrooms',
-    sub: 'Positive-pressure sterile environments with HEPA H14 air filtration',
+    sub: 'Sterile air environments with HEPA H14 filtration and positive pressure cascades',
     img: IMG.cleanroom,
     status: 'SYSTEM // STERILE AIR',
     badgeTopHead: 'AIR FILTRATION',
@@ -86,25 +87,27 @@ function Hero() {
   return (
     <section className="hero-v2">
       <div className="hero-v2-glow" aria-hidden="true" />
+      <div className="hero-ambient-spotlight" aria-hidden="true" />
+
       <div className="section" style={{ width: '100%' }}>
         <div className="hero-v2-grid">
-          {/* Left Column: Authoritative Enterprise Value Proposition */}
+          {/* Left Column: Authoritative Value Proposition & High Conversion Actions */}
           <div className="hero-v2-copy">
             <motion.div
               className="hero-status-pill"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
               <span className="hero-status-dot" />
-              <span>GLOBAL INDUSTRIAL TECHNOLOGIES • TURNKEY SYSTEMS</span>
+              <span>GLOBAL INDUSTRIAL TECHNOLOGIES • WORLDWIDE TURNKEY SYSTEMS</span>
             </motion.div>
 
             <motion.h1
               className="hero-v2-title"
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ delay: 0.1, duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
             >
               HIGH-PERFORMANCE
               <br />
@@ -116,10 +119,11 @@ function Hero() {
               className="hero-v2-lede"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ delay: 0.2, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             >
-              We help manufacturers source, install, and run complete packaging, filling, and processing
-              lines with zero hassle — from machine selection to factory testing and full operator training.
+              We engineer, deliver, and commission complete automated packaging, filling, and processing
+              lines — single-source accountability from custom machine selection and factory testing to
+              on-site installation and full operator training.
             </motion.p>
 
             <motion.div
@@ -137,40 +141,40 @@ function Hero() {
               </Link>
               <Link className="button hero-btn-catalog" to="/catalog">
                 <FileText size={15} />
-                <span>View E-Catalog &amp; PDF</span>
+                <span>Explore 2026 E-Catalog</span>
               </Link>
             </motion.div>
 
-            {/* Trust & Quality Verification Bar */}
+            {/* Trust & Quality Verification Credentials */}
             <motion.div
               className="hero-trust-bar"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.45, duration: 0.7 }}
+              transition={{ delay: 0.45, duration: 0.75 }}
             >
               <div className="hero-trust-item">
                 <CheckCircle2 size={15} />
-                <span>100% Tested Before Delivery</span>
+                <span>100% Pre-Shipment FAT Tested</span>
               </div>
               <div className="hero-trust-item">
                 <Workflow size={15} />
-                <span>10-Step Full Support</span>
+                <span>10-Step Turnkey Execution</span>
               </div>
               <div className="hero-trust-item">
                 <ShieldCheck size={15} />
-                <span>cGMP &amp; ISO Compliant</span>
+                <span>cGMP &amp; ISO 9001 Compliant</span>
               </div>
             </motion.div>
           </div>
 
-          {/* Right Column: Premium Enterprise Showcase Stage */}
+          {/* Right Column: 21st.dev Inspired Interactive Machinery Stage */}
           <motion.div
             className="hero-v2-stage"
-            initial={{ opacity: 0, scale: 0.97 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 0.18, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           >
-            {/* Interactive System Tabs Header */}
+            {/* Interactive System Switcher Tabs */}
             <div className="hero-stage-tabs" role="tablist" aria-label="Machinery Showcase Systems">
               {HERO_SYSTEMS.map((sys, idx) => (
                 <button
@@ -187,30 +191,30 @@ function Hero() {
               ))}
             </div>
 
-            {/* Clean Architectural Stage Card Viewport */}
-            <div className="hero-stage-card">
+            {/* High-Resolution Machinery Viewport Card */}
+            <div className="hero-stage-card frame">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={current.id}
                   src={current.img}
-                  alt={`${current.label} automated industrial production line`}
+                  alt={`${current.label} industrial production line`}
                   className="hero-stage-img"
-                  initial={{ opacity: 0, scale: 1.02 }}
+                  initial={{ opacity: 0, scale: 1.03 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.99 }}
-                  transition={{ duration: 0.35, ease: 'easeOut' }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.38, ease: 'easeOut' }}
                 />
               </AnimatePresence>
 
               <div className="hero-stage-overlay" />
 
-              {/* Status Badge */}
+              {/* Verified FAT Validation Status Badge */}
               <div className="hero-stage-badge">
                 <span className="live-dot" />
                 <span>{current.status}</span>
               </div>
 
-              {/* Verified FAT Testing Floating Card */}
+              {/* Floating Verified Quality Tag */}
               <motion.div
                 key={`badge-tr-${current.id}`}
                 className="hero-float-card pos-tr"
@@ -226,7 +230,7 @@ function Hero() {
                 <div className="hero-float-sub">{current.badgeTopSub}</div>
               </motion.div>
 
-              {/* Clean Telemetry Ribbon Inside Stage */}
+              {/* Real-Time Telemetry Ribbon */}
               <div className="hero-stage-footer-hud">
                 <div className="hud-metric">
                   <span className="hud-lbl">CAPACITY</span>
@@ -434,7 +438,7 @@ function WhyChooseUs() {
 }
 
 /* ==========================================================================
-   SECTION 05: MACHINERY & DIGITAL CATALOG SHOWCASE (NO DROPDOWNS)
+   SECTION 05: MACHINERY & DIGITAL CATALOG SHOWCASE
    ========================================================================== */
 function MachineryCatalogShowcase() {
   const catalogLines = [
