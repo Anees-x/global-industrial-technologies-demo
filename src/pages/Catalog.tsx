@@ -132,7 +132,7 @@ export function Catalog() {
       </section>
 
       {/* Quick Telemetry Strip */}
-      <section className="catalog-meta-strip section-rule" style={{ background: '#f6f7f4' }}>
+      <section className="catalog-meta-strip section-rule">
         <div className="catalog-meta-inner">
           <div className="catalog-meta-item">
             <span className="catalog-meta-label">DOCUMENT REF</span>
@@ -843,7 +843,7 @@ export function Catalog() {
                 </ul>
                 <Link
                   to={`/contact?product=${encodeURIComponent(item.name)}&industry=${encodeURIComponent(item.type)}&message=${encodeURIComponent(`Requesting a tailored quotation, format parts compatibility, and production timeline for: ${item.name} (${item.type}).`)}`}
-                  className="button sm white full"
+                  className="button sm dark full"
                   style={{ marginTop: 'auto', justifyContent: 'center' }}
                 >
                   <span>Request Quote for this Line</span>
